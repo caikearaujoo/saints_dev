@@ -7,7 +7,7 @@ export default function Navbar() {
       {/* LOGO */}
       <div className="relative w-[120px] h-[40px]">
         <Image
-          src="imgs/logo-saints.png"
+          src="/imgs/logo-saints.png"
           alt="UFU Saints"
           fill
           style={{ objectFit: 'contain' }}
