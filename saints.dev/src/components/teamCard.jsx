@@ -1,9 +1,11 @@
-import Image from 'next/image';
-
 export default function TeamCard({ team, onClick }) {
   return (
-    <button onClick={onClick} className="border rounded p-4 hover:scale-105 transition">
-      <Image src={team.logo} alt={team.name} width={100} height={100} className="mx-auto" />
-    </button>
+    <div
+      className="cursor-pointer border rounded-lg p-4 hover:scale-105 transition-transform shadow-md"
+      onClick={() => onClick(team)}
+    >
+      <img src={team.logo} alt={team.name} className="h-20 mx-auto mb-2" />
+      <h3 className="text-center font-bold">{team.name}</h3>
+    </div>
   );
 }
