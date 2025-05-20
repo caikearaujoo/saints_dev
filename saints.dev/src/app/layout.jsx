@@ -1,28 +1,18 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+// src/app/layout.jsx
+import './globals.css';
 import '../styles/tailwind.css';
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata = {
-  title: "Saints {dev} | UFU",
-  description: "Esporte universitário de forma inovadora e digital.",
-};
+import Header from '../components/Navbar';
+import Footer from '../components/Footer';
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className="bg-black text-white">
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
 }
+
