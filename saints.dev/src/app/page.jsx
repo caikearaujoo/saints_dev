@@ -1,6 +1,6 @@
 import Hero from '../components/home'
 import Sobre from '../components/sobre'
-import Times from '../components/times';
+import Times from '../components/timesSection';
 
 
 export default function Home() {

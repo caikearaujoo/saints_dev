@@ -7,9 +7,9 @@ import { FaDiscord, FaTwitch, FaInstagram, FaTimes } from 'react-icons/fa';
 
 export default function Hero() {
   const imagens = [
-    '/imgs/img1.png',
-    '/imgs/img1.png',
-    '/imgs/img1.png'
+    '/imgs/img1.jpg',
+    '/imgs/img2.jpg',
+    '/imgs/img4.jpg'
   ];
 
   const [atual, setAtual] = useState(0);
