@@ -17,7 +17,7 @@ export default function TimesSection() {
         <TeamDetails team={selectedTeam} onBack={handleBack} />
       ) : (
         <>
-          <h2 className="text-3xl font-bold mb-8 text-center">Conheça nossos jogadores</h2>
+          <h2 className="text-3xl font-nikea mb-8 text-center">Conheça nossos jogadores</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {teams.map((team, index) => (
               <TeamCard key={index} team={team} onClick={handleSelect} />

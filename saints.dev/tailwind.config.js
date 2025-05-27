@@ -1,9 +1,15 @@
 /** @type {import('tailwindcss').Config} */
-
-// tailwind.coffig.js
-export default {
+module.exports = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
-};
+  theme: {
+    extend: {
+      fontFamily: {
+        supreme: ['Supreme', 'sans-serif'],
+        nikea: ['NIKEA', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+}

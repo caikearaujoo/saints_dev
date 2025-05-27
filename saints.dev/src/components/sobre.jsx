@@ -5,7 +5,7 @@ export default function About() {
     <section className="bg-[#f6f0e8] py-12 md:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-[1400px] mx-auto">
         {/* Header */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 md:mb-12 tracking-wider flex items-center">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 md:mb-12 tracking-wider flex items-center font-nikea">
           <span className="text-[#000000] text-5xl sm:text-6xl md:text-7xl mr-3 sm:mr-4 leading-none">▚</span>
           QUEM SOMOS
         </h2>

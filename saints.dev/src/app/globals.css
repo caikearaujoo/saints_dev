@@ -5,4 +5,16 @@ html, body, #__next {
   margin: 0;
   padding: 0;
 }
+/* Fonte padrão para o projeto */
+/* Custom font-face rule for the 'NIKEA' font used in the project */
+@font-face {
+  font-family: 'NIKEA';
+  src: url('/public/fonts/NIKEA.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Supreme', Arial, sans-serif; /* ou 'Nikea', Arial, sans-serif se preferir essa como padrão */
+}
 
