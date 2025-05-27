@@ -6,10 +6,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        supreme: ['Supreme', 'sans-serif'],
-        nikea: ['NIKEA', 'sans-serif'],
+        supreme: ['"Supreme"', 'sans-serif'],
+        nikea: ['var(--font-nikea)'],
       },
     },
   },
   plugins: [],
-}
+};

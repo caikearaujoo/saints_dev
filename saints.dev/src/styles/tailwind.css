@@ -1,3 +1,15 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* BOTAO ABOUT */
+
+/* BOTAO ABOUT */
+
+.btn-clipped-left {
+  /* Este clip-path faz um corte diagonal no canto inferior esquerdo */
+  /* Ajuste o '8%' para controlar o quão profundo é o corte. */
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+
+}
+

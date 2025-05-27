@@ -12,7 +12,7 @@ export default function TimesSection() {
   const handleBack = () => setSelectedTeam(null);
 
   return (
-    <section className="py-16 px-8 bg-[#fef8f1] text-black min-h-screen">
+    <section className="py-16 px-8 bg-[#f6f0e8] text-black min-h-screen">
       {selectedTeam ? (
         <TeamDetails team={selectedTeam} onBack={handleBack} />
       ) : (
