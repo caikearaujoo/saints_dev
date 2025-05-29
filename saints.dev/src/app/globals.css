@@ -14,64 +14,19 @@ body {
   font-family: 'Supreme', Arial, sans-serif; /* ou 'Nikea', Arial, sans-serif se preferir essa como padrão */
 }
 
-.light-overlay-container {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.light-spot {
-  position: absolute;
-  /* AUMENTE o tamanho para luzes mais impactantes */
-  width: 500px; /* De 600px para 700px (experimente 600px a 900px) */
-  height: 500px; /* De 600px para 700px */
-  border-radius: 50%;
+@theme inline {
+  --animate-aurora: aurora 60s linear infinite;
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
   
-  /* Opacidade: AUMENTE MUITO para luzes mais brilhantes */
-  opacity: 0.04; /* <-- Aumente este valor. Experimente 0.35, 0.4, 0.5 */
-  
-  /* Desfoque: Diminua para luzes mais definidas, mas ainda suaves */
-  filter: blur(200px); /* <-- Diminua este valor (estava 150px). Experimente 100px, 80px */
-  
-  transform: translate(-50%, -50%);
-  
-  /* COR DA LUZ: Use um amarelo/dourado mais forte ou até um tom de âmbar */
-  background-color: #FFEB3B; /* Amarelo Âmbar (mais forte que FFD700, menos laranja que FFA500) */
-  /* Outras opções de cores fortes: */
-  /* background-color: #FFD700; (Ouro) */
-  /* background-color: #FFAA00; (Laranja mais puxado para o amarelo) */
-  /* background-color: #FFEB3B; (Amarelo bem vivo) */
-}
-
-/* Animações: Ajuste opacidades e escalas nas keyframes para mais dinamismo */
-
-.light-spot-1 {
-  background-color: #FFC107; /* Cor principal para a luz 1 */
-  animation: move-light-1 25s infinite ease-in-out;
-}
-
-.light-spot-2 {
-  background-color: #FFD700; /* Um segundo tom, talvez um pouco mais dourado */
-  animation: move-light-2 20s infinite ease-in-out;
-  animation-delay: 5s;
-}
-
-@keyframes move-light-1 {
-  0% { top: 10%; left: 10%; transform: translate(-50%, -50%) scale(1.1); opacity: 0.35; } /* Opacidade e escala mais altas */
-  25% { top: 80%; left: 30%; transform: translate(-50%, -50%) scale(1.5); opacity: 0.5; }  /* Ponto mais forte */
-  50% { top: 20%; left: 70%; transform: translate(-50%, -50%) scale(1.0); opacity: 0.3; }
-  75% { top: 60%; left: 5%; transform: translate(-50%, -50%) scale(1.3); opacity: 0.4; }
-  100% { top: 10%; left: 10%; transform: translate(-50%, -50%) scale(1.1); opacity: 0.35; }
-}
-
-@keyframes move-light-2 {
-  0% { top: 90%; left: 80%; transform: translate(-50%, -50%) scale(1.0); opacity: 0.3; } /* Opacidade e escala mais altas */
-  25% { top: 10%; left: 60%; transform: translate(-50%, -50%) scale(1.3); opacity: 0.45; } /* Ponto mais forte */
-  50% { top: 70%; left: 10%; transform: translate(-50%, -50%) scale(1.2); opacity: 0.35; }
-  75% { top: 30%; left: 90%; transform: translate(-50%, -50%) scale(1.1); opacity: 0.32; }
-  100% { top: 90%; left: 80%; transform: translate(-50%, -50%) scale(1.0); opacity: 0.3; }
 }

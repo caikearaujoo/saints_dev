@@ -1,31 +1,40 @@
 // src/app/layout.jsx
+'use client';
+
 import './globals.css';
 import '../styles/tailwind.css';
 import Header from '../components/Navbar';
 import Footer from '../components/Footer';
 import { nikea } from '../fonts/fonts';
+import { AuroraBackground } from '../components/ui/aurora-background';
+
+// IMPORTANTE: Registre GSAP e ScrollTrigger AQUI, uma única vez para o aplicativo.
+// Se já estiver em utils/gsap-config.js e chamado, não precisa repetir aqui.
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br" className={nikea.variable}>
       <head>
-        <link
-          href="https://api.fontshare.com/v2/css?f[]=supreme@400,700&display=swap"
-          rel="stylesheet"
-        />
+        {/* ... */}
       </head>
-      <body className="text-white font-supreme">
-        {/* Container para o efeito de luz animada */}
-        <div className="light-overlay-container">
-          <div className="light-spot light-spot-1"></div>
-          <div className="light-spot light-spot-2"></div>
-          {/* Adicione mais light-spot-N aqui se quiser mais luzes */}
-        </div>
+      <body>
+        {/* AuroraBackground como fundo global do site */}
+        {/* Ele deve ser fixo na viewport e ter um z-index bem baixo */}
+        <AuroraBackground className="fixed inset-0 w-screen h-screen z-[-10] pointer-events-none">
+          {/* O AuroraBackground não recebe 'children' aqui, ele é apenas o fundo */}
+        </AuroraBackground>
 
-        {/* Conteúdo principal do site */}
-        <div className="relative z-0"> {/* Garante que o conteúdo fique acima das luzes */}
+        {/* Conteúdo principal do site, que rola normalmente sobre o Aurora */}
+        <div className="relative z-0 min-h-screen flex flex-col">
           <Header />
-          {children}
+          <main className="flex-grow">
+            {children} {/* Aqui estará seu componente Hero e outras seções */}
+          </main>
           <Footer />
         </div>
       </body>
