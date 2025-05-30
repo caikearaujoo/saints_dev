@@ -1,19 +1,6 @@
 // src/data/teams.js
 const teams = [
-  {
-    id: 5,
-    name: "Wild Rift",
-    logo: "/imgs/games/wild-rift.svg",
-    players: [
-      { name: "metallic", role: "ad-carry", photo: "/imgs/teams/card_player.png" },
-      { name: "sona de calcinha", role: "suporte", photo: "/imgs/teams/card_player.png" },
-      { name: "jão imperador", role: "jungle", photo: "/imgs/teams/card_player.png" },
-      { name: "tempestade", role: "top laner", photo: "/imgs/teams/card_player.png" },
-      { name: "reinhard", role: "jungle", photo: "/imgs/teams/card_player.png" },
-      { name: "martelo nervoso", role: "mid laner", photo: "/imgs/teams/card_player.png" },
-    ]
-  },
-  {
+    {
     id: 1,
     name: "Valorant",
     logo: "/imgs/games/valorant.svg",
@@ -30,8 +17,22 @@ const teams = [
       { name: "girafa", role: "controlador", photo: "/imgs/teams/card_player.png" },
       { name: "morottz", role: "duelista", photo: "/imgs/teams/card_player.png" },
     ]
-  },{
+  },
+  {
     id: 2,
+    name: "Wild Rift",
+    logo: "/imgs/games/wild-rift.svg",
+    players: [
+      { name: "metallic", role: "ad-carry", photo: "/imgs/teams/card_player.png" },
+      { name: "sona de calcinha", role: "suporte", photo: "/imgs/teams/card_player.png" },
+      { name: "jão imperador", role: "jungle", photo: "/imgs/teams/card_player.png" },
+      { name: "tempestade", role: "top laner", photo: "/imgs/teams/card_player.png" },
+      { name: "reinhard", role: "jungle", photo: "/imgs/teams/card_player.png" },
+      { name: "martelo nervoso", role: "mid laner", photo: "/imgs/teams/card_player.png" },
+    ]
+  },
+  {
+    id: 3,
     name: "League of Legends",
     logo: "/imgs/games/lol.svg",
     players: [
@@ -53,7 +54,7 @@ const teams = [
     ]
   }, 
   {
-    id: 3,
+    id: 4,
     name: "CS2",
     logo: "/imgs/games/cs2.svg",
     players: [
@@ -70,7 +71,7 @@ const teams = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     name: "Teamfight Tactics",
     logo: "/imgs/games/tft.svg",
     players: [

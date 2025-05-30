@@ -113,9 +113,9 @@ export default function Footer() {
   }, []);
 
   const developers = [
-    { name: "João Silva", github: "https://github.com/joaosilva", role: "Frontend Developer" },
-    { name: "Maria Santos", github: "https://github.com/mariasantos", role: "Backend Developer" },
-    { name: "Pedro Costa", github: "https://github.com/pedrocosta", role: "UI/UX Designer" },
+    { name: "Maria Fernanda", github: "https://github.com/joaosilva", role: "Frontend Developer" },
+    { name: "Caike Araújo", github: "https://github.com/mariasantos", role: "Backend Developer" },
+    { name: "Rafael", github: "https://github.com/pedrocosta", role: "UI/UX Designer" },
   ];
 
   return (
@@ -226,7 +226,7 @@ export default function Footer() {
 
           {/* Coluna 4: Desenvolvedores */}
           <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-            <h3 className="text-lg font-bold mb-4 text-yellow-400 font-titles tracking-wider">CRÉDITOS</h3>
+            <h3 className="text-lg font-bold mb-4 text-yellow-400 font-titles tracking-wider">DESENVOLVEDORES</h3>
             <div ref={devsRef} className="space-y-4 w-full">
               {developers.map((dev, index) => (
                 <div key={index} className="flex items-center space-x-3 group w-full">
@@ -285,7 +285,6 @@ export default function Footer() {
           </p>
           <p className="text-gray-500 text-xs">
             Desenvolvido com <span className="text-yellow-400 animate-pulse text-base mx-0.5">💛</span> pela equipe de devs.
-            {/* Made with <span className="text-red-400">❤️</span> for gamers by gamers. */}
           </p>
           <div className="flex justify-center items-center space-x-2 pt-2">
             <div className="w-1 h-1 bg-yellow-500 rounded-full animate-ping opacity-75"></div>

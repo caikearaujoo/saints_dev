@@ -100,18 +100,18 @@ export default function Hero() {
       // APENAS SCROLL CONTÍNUO - Primeira coluna
       gsap.to(scrollingImagesRef.current, {
         y: "-100%",
-        duration: 100,
+        duration: 190,
         ease: "none",
-        repeat: -1,
+        repeat: -9,
         repeatRefresh: true,
       })
 
       // APENAS SCROLL CONTÍNUO - Segunda coluna
       gsap.to(scrollingImages2Ref.current, {
         y: "-100%",
-        duration: 105,
+        duration: 190,
         ease: "none",
-        repeat: -1,
+        repeat: -9,
         repeatRefresh: true,
       })
 
