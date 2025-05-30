@@ -25,7 +25,7 @@ export default function TeamCard({ team, onClick }) {
                  rounded-tl-[30px] rounded-br-[30px] 
                  flex flex-col items-center justify-center 
                  transition-all duration-300 ease-out
-                 group border border-gray-100 hover:shadow-2xl"
+                 group border-2 border-black hover:shadow-2xl "
       onClick={() => onClick(team)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -40,14 +40,6 @@ export default function TeamCard({ team, onClick }) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           priority={false}
         />
-      </div>
-
-      {/* Nome do Time */}
-      <div className="mt-4 text-center">
-        <h3 className="text-lg sm:text-xl font-bold text-gray-800 group-hover:text-yellow-600 transition-colors duration-300">
-          {team.name}
-        </h3>
-        <p className="text-sm text-gray-500 mt-1">{team.players.length} jogadores</p>
       </div>
     </div>
   )

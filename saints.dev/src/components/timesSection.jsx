@@ -3,8 +3,8 @@
 import { useState, useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import TeamCard from "./teamCard"
-import TeamDetails from "./teamDetails"
+import TeamCard from "./TeamCard"
+import TeamDetails from "./TeamDetails"
 import teams from "../data/teams"
 
 if (typeof window !== "undefined") {
@@ -84,11 +84,8 @@ export default function TimesSection() {
         <TeamDetails team={selectedTeam} onBack={handleBack} />
       ) : (
         <>
-          <h2
-            ref={titleRef}
-            className="text-3xl sm:text-4xl md:text-5xl font-nikea mb-8 md:mb-12 text-center text-gray-900"
-          >
-            Conheça nossos jogadores
+          <h2 ref={titleRef} className="text-3xl sm:text-4xl md:text-5xl mb-8 md:mb-12 text-center text-gray-900 font-bold">
+            CONHEÇA NOSSOS JOGADORES
           </h2>
 
           <div

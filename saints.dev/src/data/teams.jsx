@@ -1,9 +1,9 @@
 // src/data/teams.js
 const teams = [
   {
-    id: 1,
+    id: 5,
     name: "Wild Rift",
-    logo: "/imgs/wildrift.png",
+    logo: "/imgs/games/wild-rift.svg",
     players: [
       { name: "metallic", role: "ad-carry", photo: "/imgs/teams/card_player.png" },
       { name: "sona de calcinha", role: "suporte", photo: "/imgs/teams/card_player.png" },
@@ -14,11 +14,11 @@ const teams = [
     ]
   },
   {
-    id: 2,
+    id: 1,
     name: "Valorant",
-    logo: "/imgs/wildrift.png",
+    logo: "/imgs/games/valorant.svg",
     players: [
-      { name: "cks", role: "iniciador/igl", photo: "/imgs/teams/card_player.png" },
+      { name: "cks", role: "iniciador/igl", photo: "/imgs/teams/card_player.png", team: "cururu"},
       { name: "gutoso", role: "sentinela", photo: "/imgs/teams/card_player.png" },
       { name: "fijora", role: "duelista", photo: "/imgs/teams/card_player.png" },
       { name: "marelo", role: "controlador", photo: "/imgs/teams/card_player.png" },
@@ -31,9 +31,9 @@ const teams = [
       { name: "morottz", role: "duelista", photo: "/imgs/teams/card_player.png" },
     ]
   },{
-    id: 3,
+    id: 2,
     name: "League of Legends",
-    logo: "/imgs/wildrift.png",
+    logo: "/imgs/games/lol.svg",
     players: [
       { name: "blooper", role: "suporte", photo: "/imgs/teams/card_player.png" },
       { name: "jotinha", role: "jungle", photo: "/imgs/teams/card_player.png" },
@@ -53,9 +53,9 @@ const teams = [
     ]
   }, 
   {
-    id: 4,
+    id: 3,
     name: "CS2",
-    logo: "/imgs/wildrift.png",
+    logo: "/imgs/games/cs2.svg",
     players: [
       { name: "kdd", role: "awper/igl", photo: "/imgs/teams/card_player.png" },
       { name: "bald1", role: "rifler", photo: "/imgs/teams/card_player.png" },
@@ -70,9 +70,9 @@ const teams = [
     ]
   },
   {
-    id: 5,
+    id: 4,
     name: "Teamfight Tactics",
-    logo: "/imgs/wildrift.png",
+    logo: "/imgs/games/tft.svg",
     players: [
       { name: "toco gaita", role: "player", photo: "/imgs/teams/card_player.png" },
       { name: "hikki", role: "player", photo: "/imgs/teams/card_player.png" },
@@ -83,7 +83,7 @@ const teams = [
    {
     id: 6,
     name: "Brawl Stars",
-    logo: "/imgs/wildrift.png",
+    logo: "/imgs/games/brawl-stars.svg",
     players: [
       { name: "", role: "Gold", photo: "/imgs/teams/card_player.png" },
       { name: "a definir", role: "Gold", photo: "/imgs/teams/card_player.png" },
