@@ -36,9 +36,12 @@ export default function Navbar() {
         <Link href="#times" className="hover:text-yellow-500 transition-colors">Times</Link>
         <Link href="#fale-conosco" className="hover:text-yellow-500 transition-colors">Fale Conosco</Link>
         <Link href="#redes-sociais" className="hover:text-yellow-500 transition-colors">Redes sociais</Link>
+        <Link href="/signup">
         <button className="bg-yellow-500 px-4 py-2 rounded hover:bg-yellow-600 text-black transition-colors">
-          Log in
+          Faça parte do time
         </button>
+      </Link>
+
       </nav>
 
       {/* Botão Hamburger - Mobile */}

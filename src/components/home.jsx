@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import Image from "next/image"
 import { FaDiscord, FaTwitch, FaInstagram, FaTimes } from "react-icons/fa"
+import Link from 'next/link';
 
 export default function Hero() {
   const heroRef = useRef(null)
@@ -170,9 +171,11 @@ export default function Hero() {
                 competindo e crescendo em equipe.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-4">
+                <Link href="/signup">
                 <button className="bg-yellow-600 hover:bg-yellow-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg btn-3d-effect font-orbitron">
                   Junte-se a nós
                 </button>
+              </Link>
                 <button className="border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 font-rajdhani">
                   Saiba mais
                 </button>
