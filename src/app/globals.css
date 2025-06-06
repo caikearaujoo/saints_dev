@@ -1,0 +1,32 @@
+
+@import "tailwindcss";
+
+html, body, #__next {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+/* Fonte padrão para o projeto */
+/* Custom font-face rule for the 'NIKEA' font used in the project */
+
+
+body {
+  font-family: 'Supreme', Arial, sans-serif; /* ou 'Nikea', Arial, sans-serif se preferir essa como padrão */
+}
+
+@theme inline {
+  --animate-aurora: aurora 60s linear infinite;
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
+  
+}
