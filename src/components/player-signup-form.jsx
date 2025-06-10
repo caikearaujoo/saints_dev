@@ -40,11 +40,15 @@ export function PlayerSignupForm({
 
   const getRolesByModalidade = (modalidade) => {
     const roles = {
-      lol: ["Top", "Jungle", "Mid", "ADC", "Support"],
-      valorant: ["Duelist", "Controller", "Initiator", "Sentinel"],
-      cs2: ["Entry Fragger", "AWPer", "Support", "IGL", "Lurker"],
-      fifa: ["Atacante", "Meio-campo", "Defensor", "Goleiro"],
-      outros: ["Flex", "Especialista", "Generalista"],
+      lol: ["Top", "Jungle", "Mid", "ADC", "Suporte"],
+      valorant: ["Duelista", "Controlador", "Iniciador", "Sentinela", "Flex"],
+      cs2: ["Entry Fragger", "AWPer", "Support", "IGL", "Lurker"], 
+      fifa: ["Pro Clubs", "Ultimate Team"],
+      wildRift: ["Top", "Jungle", "Mid", "ADC", "Suporte"],
+      brawlStars: ["Tank", "Artilharia",  "Marksman",  "Damage Dealer", "Controller", "Assassin", "Support"], 
+      tft: ["Individual", "Dupla", "Trio+"], 
+      clashRoyale: ["1v1", "2v2"], 
+      outros: ["Outro"], 
     }
     return roles[modalidade] || []
   }
@@ -192,8 +196,12 @@ export function PlayerSignupForm({
                   <SelectItem value="lol">League of Legends</SelectItem>
                   <SelectItem value="valorant">Valorant</SelectItem>
                   <SelectItem value="cs2">Counter-Strike 2</SelectItem>
-                  <SelectItem value="fifa">FIFA</SelectItem>
-                  <SelectItem value="outros">Outros</SelectItem>
+                  <SelectItem value="fifa">FIFA</SelectItem> 
+                  <SelectItem value="wild rift">Wild Rift</SelectItem>
+                  <SelectItem value="tft">TFT</SelectItem>
+                  <SelectItem value="brawl stars">Brawl Stars</SelectItem>
+                  <SelectItem value="outros">Outros</SelectItem> 
+                  
                 </SelectContent>
               </Select>
             </LabelInputContainer>
@@ -208,7 +216,7 @@ export function PlayerSignupForm({
                 </SelectTrigger>
                 <SelectContent>
                   {getRolesByModalidade(formData.modalidade).map((role) => (
-                    <SelectItem key={role} value={role.toLowerCase()}>
+                    <SelectItem key={role} value={role.toLowerCase()}>  
                       {role}
                     </SelectItem>
                   ))}

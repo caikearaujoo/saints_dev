@@ -172,13 +172,21 @@ export default function Hero() {
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-4">
                 <Link href="/signup">
-                <button className="bg-yellow-600 hover:bg-yellow-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg btn-3d-effect font-orbitron">
+                <button className="bg-yellow-600 hover:bg-yellow-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg btn-3d-effect font-orbitron cursor-pointer">
                   Junte-se a nós
                 </button>
               </Link>
-                <button className="border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 font-rajdhani">
-                  Saiba mais
-                </button>
+                <button 
+                onClick={() => {
+                  const aboutSection = document.getElementById('sobre-nos');
+                  if (aboutSection) {
+                    aboutSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 font-rajdhani cursor-pointer"
+              >
+                Quem somos
+              </button>
               </div>
             </div>
           </div>
@@ -317,33 +325,34 @@ export default function Hero() {
 
       {/* Social Media Icons */}
       <div
-        ref={socialRef}
+        ref={socialRef} 
         className="absolute left-4 sm:left-6 bottom-20 sm:bottom-24 flex flex-col gap-4 sm:gap-6 text-yellow-700 text-xl sm:text-2xl z-20"
       >
         <a
-          href="#"
-          className="hover:text-yellow-500 transition-all duration-300 transform hover:scale-125 p-2 rounded-full hover:bg-yellow-100"
+          href="https://discord.gg/YdfQ8jng"
+          onClick={() => console.log("Discord clicado")}
+          className="cursor-pointer hover:text-yellow-500 transition-all duration-300 transform hover:scale-125 p-2 rounded-full hover:bg-yellow-100"
         >
           <FaDiscord />
         </a>
         <a
-          href="#"
+          href="https://www.twitch.tv/ufuesports" 
           className="hover:text-purple-600 transition-all duration-300 transform hover:scale-125 p-2 rounded-full hover:bg-purple-100"
         >
           <FaTwitch />
         </a>
-        <a
-          href="#"
+        <a 
+          href="https://www.instagram.com/ufuesports/"
           className="hover:text-pink-600 transition-all duration-300 transform hover:scale-125 p-2 rounded-full hover:bg-pink-100"
         >
           <FaInstagram />
-        </a>
+        </a> 
         <a
-          href="#"
+          href="https://x.com/ufuesports"
           className="hover:text-gray-800 transition-all duration-300 transform hover:scale-125 p-2 rounded-full hover:bg-gray-100"
         >
-          <FaTimes />
-        </a>
+          <FaTimes /> 
+        </a> 
       </div>
 
       {/* Scroll Indicator */}

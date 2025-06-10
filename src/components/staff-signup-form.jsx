@@ -29,7 +29,7 @@ export function StaffSignupForm({
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log("Staff form submitted:", formData)
-    // Aqui você implementará a lógica para salvar no banco
+    // Aqui você implementará a lógica para salvar no banco 
   }
 
   const handleInputChange = (field, value) => {
@@ -163,15 +163,14 @@ export function StaffSignupForm({
                 <SelectValue placeholder="Selecione sua área de interesse" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="marketing">Marketing e Comunicação</SelectItem>
+                <SelectItem value="marketing">Marketing</SelectItem>
                 <SelectItem value="design">Design Gráfico</SelectItem>
                 <SelectItem value="eventos">Organização de Eventos</SelectItem>
-                <SelectItem value="desenvolvimento">Desenvolvimento</SelectItem>
+                <SelectItem value="videos">Edição de vídeos</SelectItem> 
                 <SelectItem value="financeiro">Financeiro</SelectItem>
-                <SelectItem value="juridico">Jurídico</SelectItem>
-                <SelectItem value="rh">Recursos Humanos</SelectItem>
+                <SelectItem value="rh">Manager de modalidades</SelectItem>
                 <SelectItem value="outros">Outros</SelectItem>
-              </SelectContent>
+              </SelectContent> 
             </Select>
           </LabelInputContainer>
 
@@ -195,7 +194,7 @@ export function StaffSignupForm({
               placeholder="Conte sobre suas experiências anteriores relevantes..."
               className="min-h-[100px]"
               required />
-          </LabelInputContainer>
+          </LabelInputContainer> 
 
           <LabelInputContainer>
             <Label htmlFor="disponibilidade">Disponibilidade</Label>
@@ -204,8 +203,6 @@ export function StaffSignupForm({
                 <SelectValue placeholder="Qual sua disponibilidade?" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="integral">Tempo Integral (20+ horas/semana)</SelectItem>
-                <SelectItem value="parcial">Tempo Parcial (10-20 horas/semana)</SelectItem>
                 <SelectItem value="pontual">Pontual (menos de 10 horas/semana)</SelectItem>
                 <SelectItem value="eventos">Apenas para eventos específicos</SelectItem>
               </SelectContent>

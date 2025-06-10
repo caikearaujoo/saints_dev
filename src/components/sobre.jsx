@@ -24,7 +24,7 @@ export default function About() {
         titleRef.current,
         {
           opacity: 0,
-          x: -50,
+          x: -50, 
         },
         {
           opacity: 1,
@@ -174,7 +174,7 @@ export default function About() {
             <Link href="/signup">
             <button
               ref={buttonRef}
-              className="absolute -bottom-7 right-[-7px] sm:-right-6 z-20 bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wide shadow-xl transition-all transform hover:scale-105 btn-clipped-left btn-3d-effect"
+              className="absolute -bottom-7 right-[-7px] sm:-right-6 z-20 bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wide shadow-xl transition-all transform hover:scale-105 btn-clipped-left btn-3d-effect cursor-pointer"
             >
               FAÇA PARTE DO TIME
             </button>
