@@ -34,7 +34,6 @@ export default function Navbar() {
       <nav className="hidden md:flex gap-8 items-center text-white font-medium">
         <Link href="#sobre-nos" className="hover:text-yellow-500 transition-colors">Sobre nós</Link>
         <Link href="#times" className="hover:text-yellow-500 transition-colors">Times</Link>
-        <Link href="#fale-conosco" className="hover:text-yellow-500 transition-colors">Fale Conosco</Link>
         <Link href="#redes-sociais" className="hover:text-yellow-500 transition-colors">Redes sociais</Link>
         <Link href="/signup">
         <button className="bg-yellow-500 px-4 py-2 rounded hover:bg-yellow-600 text-black transition-colors cursor-pointer">
