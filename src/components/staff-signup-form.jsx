@@ -1,15 +1,77 @@
 "use client";
-import { useState } from "react"
+import { useState, useRef} from "react" //react hooks
+import { useEffect } from "react" //react hooks
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { cn } from "@/lib/utils"
 import { IconArrowLeft, IconUsers } from "@tabler/icons-react"
+import api from '../services/api'
 
 export function StaffSignupForm({
   onBack
 }) {
+  const [staff, setStaff] = useState([])
+
+const inputName = useRef();
+const inputEmail = useRef();
+const inputIdade = useRef();
+const inputMatricula = useRef();
+const inputCurso = useRef();
+const inputPeriodo = useRef();
+const inputTelefone = useRef();
+
+// Dados do Staff
+const inputAreaInteresse = useRef();
+const inputHabilidades = useRef();
+const inputExperiencia = useRef();
+const inputDisponibilidade = useRef();
+
+  async function getStaff(){
+    const staffFromApi = await api.get('/staffs')
+
+    setStaff(staffFromApi.data)
+    console.log(staff)
+  }
+
+  useEffect(() => {
+    getStaff()
+  }, [])
+
+  async function createStaff() {
+  try {
+    // 1. Cria a pessoa
+    const pessoaResponse = await api.post('/usuarios', {
+      nome: formData.nome,
+      email: formData.email,
+      idade: parseInt(formData.idade),
+      matricula: formData.matricula,
+      curso: formData.curso,
+      periodo: formData.periodo,
+      telefone: formData.telefone,
+      dataInscricao: new Date().toISOString()
+    });
+
+    const pessoaId = pessoaResponse.data.id;
+
+    // 2. Cria o staff
+    const staffResponse = await api.post('/staffs', {
+      pessoaId: pessoaId,
+      areaInteresse: formData.areaInteresse,
+      habilidades: formData.habilidades,
+      experiencia: formData.experiencia,
+      disponibilidade: formData.disponibilidade
+    });
+
+    console.log("Staff cadastrado com sucesso:", staffResponse.data);
+    alert("Candidatura enviada com sucesso!");
+  } catch (error) {
+    console.error("Erro ao criar staff:", error);
+    alert("Erro ao enviar candidatura. Verifique os campos e tente novamente.");
+  }
+}
+  
   const [formData, setFormData] = useState({
     // Dados da Pessoa
     nome: "",
@@ -26,11 +88,12 @@ export function StaffSignupForm({
     disponibilidade: "",
   })
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("Staff form submitted:", formData)
-    // Aqui você implementará a lógica para salvar no banco 
-  }
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  console.log("Staff form submitted:", formData);
+  await createStaff();
+};
+
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
@@ -41,7 +104,7 @@ export function StaffSignupForm({
       className="shadow-input mx-auto w-full max-w-2xl rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black">
       <div className="flex items-center mb-6">
         <button
-          onClick={onBack}
+          onClick={onBack} 
           className="flex items-center text-neutral-600 dark:text-neutral-300 hover:text-neutral-800 dark:hover:text-neutral-100 transition-colors">
           <IconArrowLeft className="h-4 w-4 mr-2" />
           Voltar
@@ -71,7 +134,7 @@ export function StaffSignupForm({
               value={formData.nome}
               onChange={(e) => handleInputChange("nome", e.target.value)}
               placeholder="João Silva Santos"
-              required />
+              required ref = {inputName}/>
           </LabelInputContainer>
 
           <div className="grid md:grid-cols-2 gap-4">
@@ -83,7 +146,7 @@ export function StaffSignupForm({
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
                 placeholder="joao@ufu.br"
-                required />
+                required ref = {inputEmail}/>
             </LabelInputContainer>
 
             <LabelInputContainer>
@@ -94,7 +157,7 @@ export function StaffSignupForm({
                 value={formData.idade}
                 onChange={(e) => handleInputChange("idade", e.target.value)}
                 placeholder="20"
-                required />
+                required ref = {inputIdade}/>
             </LabelInputContainer>
           </div>
 
@@ -106,7 +169,7 @@ export function StaffSignupForm({
                 value={formData.matricula}
                 onChange={(e) => handleInputChange("matricula", e.target.value)}
                 placeholder="12345678901"
-                required />
+                required ref = {inputMatricula}/>
             </LabelInputContainer>
 
             <LabelInputContainer>
@@ -116,7 +179,7 @@ export function StaffSignupForm({
                 value={formData.telefone}
                 onChange={(e) => handleInputChange("telefone", e.target.value)}
                 placeholder="(34) 99999-9999"
-                required />
+                required ref = {inputTelefone}/>
             </LabelInputContainer>
           </div>
 
@@ -128,23 +191,24 @@ export function StaffSignupForm({
                 value={formData.curso}
                 onChange={(e) => handleInputChange("curso", e.target.value)}
                 placeholder="Ciência da Computação"
-                required />
+                required ref = {inputCurso}/>
             </LabelInputContainer>
 
             <LabelInputContainer>
               <Label htmlFor="periodo">Período</Label>
               <Select onValueChange={(value) => handleInputChange("periodo", value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Selecione o período" />
-                </SelectTrigger>
-                <SelectContent>
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((periodo) => (
-                    <SelectItem key={periodo} value={periodo.toString()}>
-                      {periodo}º Período
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+
+              <SelectTrigger>
+                <SelectValue placeholder="Selecione o período" />
+              </SelectTrigger>
+              <SelectContent>
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((periodo) => (
+                  <SelectItem key={periodo} value={periodo.toString()}>
+                    {periodo}º Período
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
             </LabelInputContainer>
           </div>
         </div>
@@ -158,7 +222,7 @@ export function StaffSignupForm({
 
           <LabelInputContainer>
             <Label htmlFor="areaInteresse">Área de Interesse</Label>
-            <Select onValueChange={(value) => handleInputChange("areaInteresse", value)}>
+            <Select onValueChange={(value) => handleInputChange("areaInteresse", value)} ref = {inputAreaInteresse}>
               <SelectTrigger>
                 <SelectValue placeholder="Selecione sua área de interesse" />
               </SelectTrigger>
@@ -182,7 +246,7 @@ export function StaffSignupForm({
               onChange={(e) => handleInputChange("habilidades", e.target.value)}
               placeholder="Descreva suas principais habilidades e competências..."
               className="min-h-[100px]"
-              required />
+              required ref = {inputHabilidades}/>
           </LabelInputContainer>
 
           <LabelInputContainer>
@@ -193,7 +257,7 @@ export function StaffSignupForm({
               onChange={(e) => handleInputChange("experiencia", e.target.value)}
               placeholder="Conte sobre suas experiências anteriores relevantes..."
               className="min-h-[100px]"
-              required />
+              required ref = {inputExperiencia}/>
           </LabelInputContainer> 
 
           <LabelInputContainer>
@@ -202,7 +266,7 @@ export function StaffSignupForm({
               <SelectTrigger>
                 <SelectValue placeholder="Qual sua disponibilidade?" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent ref = {inputDisponibilidade}>
                 <SelectItem value="pontual">Pontual (menos de 10 horas/semana)</SelectItem>
                 <SelectItem value="eventos">Apenas para eventos específicos</SelectItem>
               </SelectContent>
