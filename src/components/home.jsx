@@ -19,11 +19,11 @@ export default function Hero() {
   const teamImages = [
     "/imgs/img1.jpg",
     "/imgs/img2.jpg",
-    "/imgs/img4.jpg",
-    "/imgs/img4.jpg",
+    "/imgs/mrilo e cks.png",
+    "/imgs/ravens 1.png",
+    "/imgs/ravens 2.png",
     "/imgs/img2.jpg",
-    "/imgs/img2.jpg",
-    "/imgs/img2.jpg",
+    "/imgs/img1.jpg",
     "/imgs/img2.jpg",
   ]
 
