@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { cn } from "@/lib/utils"
 import { IconArrowLeft, IconGamepad2 } from "@tabler/icons-react"
+import api from '../services/api'
 
 export function PlayerSignupForm({
   onBack
@@ -28,11 +29,47 @@ export function PlayerSignupForm({
     linkPerfil: "",
   })
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("Player form submitted:", formData)
-    // Aqui você implementará a lógica para salvar no banco
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    // 1. Cria a Pessoa
+    const pessoaResponse = await api.post('/usuarios', {
+      nome: formData.nome,
+      email: formData.email,
+      idade: Number(formData.idade),
+      matricula: formData.matricula,
+      curso: formData.curso,
+      periodo: Number(formData.periodo),
+      telefone: formData.telefone,
+      dataInscricao: new Date().toISOString() // ou use um estado se quiser customizar
+    });
+
+    const pessoaId = pessoaResponse.data.id;
+
+    // 2. Cria o Player
+    const playerResponse = await api.post('/players', {
+      pessoaId,
+      modalidade: formData.modalidade,
+      role: formData.role,
+      eloRanking: formData.eloRanking,
+      experiencia: formData.experiencia,
+      disponibilidade: formData.disponibilidade,
+      linkPerfil: formData.linkPerfil
+    });
+
+    alert("Candidatura enviada com sucesso!");
+    console.log("Player criado:", playerResponse.data);
+
+    setFormData({
+      nome: "", email: "", idade: "", matricula: "", curso: "", periodo: "", telefone: "",
+      modalidade: "", role: "", eloRanking: "", experiencia: "", disponibilidade: "", linkPerfil: ""
+    });
+  } catch (error) {
+    console.error("Erro ao enviar candidatura:", error);
+    alert("Erro ao enviar candidatura. Verifique os dados e tente novamente.");
   }
+};
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
@@ -200,6 +237,7 @@ export function PlayerSignupForm({
                   <SelectItem value="wild rift">Wild Rift</SelectItem>
                   <SelectItem value="tft">TFT</SelectItem>
                   <SelectItem value="brawl stars">Brawl Stars</SelectItem>
+                  <SelectItem value="clash royale">Clash Royale</SelectItem> 
                   <SelectItem value="outros">Outros</SelectItem> 
                   
                 </SelectContent>
