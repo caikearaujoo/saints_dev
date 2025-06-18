@@ -24,7 +24,7 @@ export default function Hero() {
     "/imgs/ravens 2.png",
     "/imgs/rafa_luiz.jpg",
     "/imgs/time_cs.jpg",
-    "/imgs/img2.jpg",
+    "/imgs/meninas1.jpg",
   ]
 
   useEffect(() => {
