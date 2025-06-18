@@ -24,19 +24,36 @@ Este projeto é uma plataforma full stack desenvolvida para a atlética de e-spo
 
 ## 🧱 Estrutura do Projeto
 
-```
+```plaintext
 .
-├── public/                # Arquivos estáticos
+├── .next/                 # Build gerado pelo Next.js
+├── node_modules/          # Dependências do projeto
+├── prisma/                # Schema e migrações do banco (Prisma)
+│   ├── migrations/
+│   └── schema.prisma
+├── public/
+│   └── imgs/              # Imagens públicas
 ├── src/
-│   ├── components/        # Componentes reutilizáveis React
-│   ├── pages/             # Rotas do Next.js
-│   ├── styles/            # Estilos globais e Tailwind
-│   ├── lib/               # Configurações (ex: Prisma Client)
-│   ├── prisma/            # Schema do banco e migrações
-│   └── generated/         # Código gerado automaticamente pelo Prisma
-├── .env.local             # Variáveis de ambiente (ex: DATABASE_URL)
-└── README.md              # Documentação do projeto
-```
+│   ├── app/               # Rotas e layout do Next.js (App Router)
+│   ├── components/        # Componentes reutilizáveis
+│   ├── data/              # Arquivos de dados (mocks, seeds, etc.)
+│   ├── fonts/             # Fontes utilizadas no projeto
+│   ├── generated/         # Código gerado automaticamente (ex: Prisma Client)
+│   ├── lib/               # Utilitários e configuração de libs
+│   ├── services/          # Funções de serviço e lógica de negócio
+│   ├── styles/            # Estilização global e temas
+│   └── server.js          # Configuração opcional do servidor
+├── .env                   # Variáveis de ambiente (NÃO versionar)
+├── .gitignore             # Arquivos e pastas ignorados pelo Git
+├── README.md              # Documentação do projeto
+├── package.json           # Dependências e scripts
+├── package-lock.json      # Lockfile do npm
+├── tailwind.config.js     # Configuração do TailwindCSS
+├── postcss.config.js      # Configuração do PostCSS
+├── next.config.mjs        # Configuração do Next.js
+├── jsconfig.json          # Path aliases para facilitar imports
+└── components.json        # Configurações de UI (se aplicável)
+
 
 ---
 
