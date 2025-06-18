@@ -122,12 +122,22 @@ O Supabase foi escolhido por ser uma solução moderna, gratuita (até certo lim
 
 ---
 
-## 🔮 Futuras Melhorias
+## 🎨 Figma & Processo de Design
 
-- Autenticação e dashboard privado para admins
-- Sistema de gerenciamento de eventos e equipes
-- Hospedagem no Vercel
-- Painel de estatísticas com gráficos
+Durante o desenvolvimento do projeto, utilizamos o [Figma](https://www.figma.com/board/c0S0V92jKQYpnjRlesbVEE/Saints-%7Bdev%7D?node-id=0-1&p=f&t=tHm7P8ce8QXYZz2W-0) como ferramenta principal para brainstorm e construção da identidade visual do sistema.
+
+Através do board colaborativo, conseguimos:
+
+- 📌 Centralizar ideias e referências visuais para a interface;
+- 🧠 Mapear fluxos de navegação e usabilidade;
+- 👥 Colaborar em tempo real com os membros do time;
+- 🎯 Validar rapidamente layouts antes da implementação;
+- 🧩 Organizar os elementos de design reutilizáveis.
+
+> 🔗 [Acesse o board do Figma aqui](https://www.figma.com/board/c0S0V92jKQYpnjRlesbVEE/Saints-%7Bdev%7D?node-id=0-1&p=f&t=tHm7P8ce8QXYZz2W-0)
+
+Essa etapa foi essencial para garantir que o projeto tivesse consistência visual, acessibilidade e foco na experiência do usuário desde o início da concepção até o desenvolvimento.
+
 
 ---
 
