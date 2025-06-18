@@ -22,8 +22,8 @@ export default function Hero() {
     "/imgs/mrilo e cks.png",
     "/imgs/ravens 1.png",
     "/imgs/ravens 2.png",
-    "/imgs/img2.jpg",
-    "/imgs/img1.jpg",
+    "/imgs/rafa_luiz.jpg",
+    "/imgs/time_cs.jpg",
     "/imgs/img2.jpg",
   ]
 
