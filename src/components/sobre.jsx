@@ -5,6 +5,8 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
 import Link from 'next/link';
+import { AboutJoinButton } from "./signup-buttons"
+
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
@@ -171,14 +173,14 @@ export default function About() {
               />
             </div>
             {/* Botão Amarelo Sobreposto */}
-            <Link href="/signup">
-            <button
+         
+            <AboutJoinButton
               ref={buttonRef}
               className="absolute -bottom-7 right-[-7px] sm:-right-6 z-20 bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wide shadow-xl transition-all transform hover:scale-105 btn-clipped-left btn-3d-effect cursor-pointer"
             >
               FAÇA PARTE DO TIME
-            </button>
-          </Link>
+            </AboutJoinButton>
+      
           </div>
         </div>
       </div>

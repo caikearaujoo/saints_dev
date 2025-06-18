@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import Image from "next/image"
 import { FaDiscord, FaTwitch, FaInstagram, FaTimes } from "react-icons/fa"
-import Link from 'next/link';
+import { HeroJoinButton, HeroMobileJoinButton } from "./signup-buttons"
 
 export default function Hero() {
   const heroRef = useRef(null)
@@ -171,22 +171,19 @@ export default function Hero() {
                 competindo e crescendo em equipe.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-4">
-                <Link href="/signup">
-                <button className="bg-yellow-600 hover:bg-yellow-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg btn-3d-effect font-orbitron cursor-pointer">
-                  Junte-se a nós
+                {/* APENAS SUBSTITUÍDO O LINK PELO COMPONENTE */}
+                <HeroJoinButton />
+                <button
+                  onClick={() => {
+                    const aboutSection = document.getElementById("sobre-nos")
+                    if (aboutSection) {
+                      aboutSection.scrollIntoView({ behavior: "smooth" })
+                    }
+                  }}
+                  className="border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 font-rajdhani cursor-pointer"
+                >
+                  Quem somos
                 </button>
-              </Link>
-                <button 
-                onClick={() => {
-                  const aboutSection = document.getElementById('sobre-nos');
-                  if (aboutSection) {
-                    aboutSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 font-rajdhani cursor-pointer"
-              >
-                Quem somos
-              </button>
               </div>
             </div>
           </div>
@@ -217,7 +214,6 @@ export default function Hero() {
                       sizes="30vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-yellow-900/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg" />
-                    {/* Borda de hover sem cortar */}
                     <div className="absolute inset-0 border-2 border-transparent hover:border-yellow-400 transition-colors duration-300 rounded-lg pointer-events-none" />
                   </div>
                 ))}
@@ -274,9 +270,8 @@ export default function Hero() {
                 A atlética de e-sports da UFU. Conectando, competindo e crescendo em equipe.
               </p>
               <div className="flex flex-col gap-3">
-                <button className="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 font-orbitron">
-                  Junte-se a nós
-                </button>
+                {/* APENAS SUBSTITUÍDO O LINK PELO COMPONENTE */}
+                <HeroMobileJoinButton />
                 <button className="border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 font-rajdhani">
                   Saiba mais
                 </button>
@@ -325,7 +320,7 @@ export default function Hero() {
 
       {/* Social Media Icons */}
       <div
-        ref={socialRef} 
+        ref={socialRef}
         className="absolute left-4 sm:left-6 bottom-20 sm:bottom-24 flex flex-col gap-4 sm:gap-6 text-yellow-700 text-xl sm:text-2xl z-20"
       >
         <a
@@ -336,23 +331,23 @@ export default function Hero() {
           <FaDiscord />
         </a>
         <a
-          href="https://www.twitch.tv/ufuesports" 
+          href="https://www.twitch.tv/ufuesports"
           className="hover:text-purple-600 transition-all duration-300 transform hover:scale-125 p-2 rounded-full hover:bg-purple-100"
         >
           <FaTwitch />
         </a>
-        <a 
+        <a
           href="https://www.instagram.com/ufuesports/"
           className="hover:text-pink-600 transition-all duration-300 transform hover:scale-125 p-2 rounded-full hover:bg-pink-100"
         >
           <FaInstagram />
-        </a> 
+        </a>
         <a
           href="https://x.com/ufuesports"
           className="hover:text-gray-800 transition-all duration-300 transform hover:scale-125 p-2 rounded-full hover:bg-gray-100"
         >
-          <FaTimes /> 
-        </a> 
+          <FaTimes />
+        </a>
       </div>
 
       {/* Scroll Indicator */}

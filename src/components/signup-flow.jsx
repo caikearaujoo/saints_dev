@@ -1,10 +1,9 @@
-"use client";
+"use client"
 import { useState } from "react"
 import { RoleSelection } from "./role-selection"
 import { StaffSignupForm } from "./staff-signup-form"
 import { PlayerSignupForm } from "./player-signup-form"
 
-console.log({ RoleSelection, StaffSignupForm, PlayerSignupForm });
 export function SignupFlow() {
   const [selectedRole, setSelectedRole] = useState(null)
 
@@ -17,12 +16,12 @@ export function SignupFlow() {
   }
 
   if (selectedRole === "staff") {
-    return <StaffSignupForm onBack={handleBack} />;
+    return <StaffSignupForm onBack={handleBack} />
   }
 
   if (selectedRole === "player") {
-    return <PlayerSignupForm onBack={handleBack} />;
+    return <PlayerSignupForm onBack={handleBack} />
   }
 
-  return <RoleSelection onRoleSelect={handleRoleSelect} />;
+  return <RoleSelection onRoleSelect={handleRoleSelect} />
 }
