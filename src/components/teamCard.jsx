@@ -21,17 +21,17 @@ export default function TeamCard({ team, onClick }) {
   return (
     <div
       ref={cardRef}
-      className="cursor-pointer bg-white shadow-xl w-full aspect-square max-w-[280px] mx-auto
-                 rounded-tl-[30px] rounded-br-[30px] 
-                 flex flex-col items-center justify-center 
-                 transition-all duration-300 ease-out
-                 group border-2 border-black hover:shadow-2xl "
+      className="cursor-pointer bg-[#ECECEC] shadow-xl w-full aspect-square max-w-[240px] mx-auto
+           rounded-tl-[25px] rounded-br-[25px] 
+           flex flex-col items-center justify-center 
+           transition-all duration-300 ease-out
+           group border border-[#030303] hover:shadow-2xl hover:border-[#030303]"
       onClick={() => onClick(team)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {/* Container da Imagem */}
-      <div className="relative w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40 group-hover:scale-110 transition-transform duration-300">
+      <div className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 group-hover:scale-110 transition-transform duration-300">
         <Image
           src={team.logo || "/placeholder.svg"}
           alt={team.name}

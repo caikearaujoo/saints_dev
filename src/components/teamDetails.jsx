@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
@@ -15,8 +15,24 @@ export default function TeamDetails({ team, onBack }) {
   const cardRefs = useRef([])
   const prevButtonRef = useRef(null)
   const nextButtonRef = useRef(null)
+  const [currentTeamIndex, setCurrentTeamIndex] = useState(0)
+  const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0)
 
   const players = team?.players || []
+
+  // Agrupar jogadores por time
+  const groupedPlayers = players.reduce((acc, player) => {
+    const teamName = player.team || "Sem Time"
+    if (!acc[teamName]) {
+      acc[teamName] = []
+    }
+    acc[teamName].push(player)
+    return acc
+  }, {})
+
+  const teamNames = Object.keys(groupedPlayers)
+  const currentTeamName = teamNames[currentTeamIndex] || teamNames[0]
+  const currentPlayers = groupedPlayers[currentTeamName] || []
 
   // Configurar as animações GSAP
   useEffect(() => {
@@ -66,146 +82,29 @@ export default function TeamDetails({ team, onBack }) {
           })
         })
       })
-
-      // Hover para botão anterior
-      if (prevButtonRef.current) {
-        prevButtonRef.current.addEventListener("mouseenter", () => {
-          gsap.to(prevButtonRef.current, {
-            scale: 1.15,
-            backgroundColor: "#f3f4f6",
-            duration: 0.3,
-            ease: "power2.out",
-          })
-        })
-
-        prevButtonRef.current.addEventListener("mouseleave", () => {
-          gsap.to(prevButtonRef.current, {
-            scale: 1,
-            backgroundColor: "#ffffff",
-            duration: 0.3,
-            ease: "power2.out",
-          })
-        })
-      }
-
-      // Hover para botão próximo
-      if (nextButtonRef.current) {
-        nextButtonRef.current.addEventListener("mouseenter", () => {
-          gsap.to(nextButtonRef.current, {
-            scale: 1.15,
-            backgroundColor: "#f3f4f6",
-            duration: 0.3,
-            ease: "power2.out",
-          })
-        })
-
-        nextButtonRef.current.addEventListener("mouseleave", () => {
-          gsap.to(nextButtonRef.current, {
-            scale: 1,
-            backgroundColor: "#ffffff",
-            duration: 0.3,
-            ease: "power2.out",
-          })
-        })
-      }
     }, containerRef)
 
     return () => ctx.revert()
-  }, [])
+  }, [currentTeamIndex])
 
-  // Função para scroll com GSAP (velocidade diminuída)
-  const scrollCards = (direction) => {
-    const container = cardsContainerRef.current
-    if (!container) return
-
-    // Pausar auto-scroll quando clicar nas setas
-    if (autoScrollRef.current) {
-      clearInterval(autoScrollRef.current)
-    }
-
-    const cardWidth = 250 + 24 // largura do card + gap
-    const currentScroll = container.scrollLeft
-    const targetScroll = currentScroll + cardWidth * direction
-
-    gsap.to(container, {
-      scrollLeft: targetScroll,
-      duration: 1.2, // Aumentado para ser mais lento
-      ease: "power2.inOut",
-      onComplete: () => {
-        // Reiniciar auto-scroll após 5 segundos
-        setTimeout(() => {
-          startAutoScroll()
-        }, 5000)
-      },
-    })
+  const nextTeam = () => {
+    setCurrentTeamIndex((prev) => (prev + 1) % teamNames.length)
   }
 
-  const handleNext = () => scrollCards(1)
-  const handlePrev = () => scrollCards(-1)
-
-  // Função para iniciar auto-scroll
-  const startAutoScroll = () => {
-    if (autoScrollRef.current) {
-      clearInterval(autoScrollRef.current)
-    }
-
-    autoScrollRef.current = setInterval(() => {
-      const container = cardsContainerRef.current
-      if (!container) return
-
-      const cardWidth = 250 + 24 // largura do card + gap
-      const maxScroll = container.scrollWidth - container.clientWidth
-      const currentScroll = container.scrollLeft
-
-      if (currentScroll >= maxScroll - 10) {
-        // Volta para o início com animação mais lenta
-        gsap.to(container, {
-          scrollLeft: 0,
-          duration: 1.8, // Mais lento
-          ease: "power2.inOut",
-        })
-      } else {
-        // Scroll para o próximo card mais lento
-        gsap.to(container, {
-          scrollLeft: currentScroll + cardWidth,
-          duration: 1.2, // Mais lento
-          ease: "power2.inOut",
-        })
-      }
-    }, 4000) // Intervalo aumentado para 4 segundos
+  const prevTeam = () => {
+    setCurrentTeamIndex((prev) => (prev - 1 + teamNames.length) % teamNames.length)
   }
 
-  // Auto-scroll com GSAP (velocidade diminuída)
   useEffect(() => {
-    const timer = setTimeout(() => {
-      startAutoScroll()
-    }, 3000) // Inicia após 3 segundos
-
-    return () => {
-      clearTimeout(timer)
-      if (autoScrollRef.current) {
-        clearInterval(autoScrollRef.current)
-      }
-    }
-  }, [])
-
-  // Pausa o auto-scroll quando o mouse está sobre o container
-  const handleMouseEnter = () => {
-    if (autoScrollRef.current) {
-      clearInterval(autoScrollRef.current)
-    }
-  }
-
-  const handleMouseLeave = () => {
-    startAutoScroll()
-  }
+    setCurrentPlayerIndex(0)
+  }, [currentTeamIndex])
 
   return (
-    <div ref={containerRef} className="w-full text-center max-w-[1400px] mx-auto px-4">
+    <div ref={containerRef} className="w-full text-center max-w-[1400px] mx-auto px-4 text-[#ECECEC] min-h-screen">
       <div ref={headerRef} className="mb-6">
         <button
           onClick={onBack}
-          className="mb-4 px-5 py-2 bg-black text-white rounded-full hover:bg-yellow-400 transition duration-300 font-semibold text-sm flex items-center gap-2 mx-auto"
+          className="mb-4 px-5 py-2 bg-transparent text-[#ECECEC] border border-[#ffc700] rounded-full hover:bg-[#ffc700] hover:text-[#030303] transition duration-300 font-semibold text-sm flex items-center gap-2 mx-auto"
         >
           ⬅ Voltar
         </button>
@@ -215,66 +114,133 @@ export default function TeamDetails({ team, onBack }) {
             <Image src={team.logo || "/placeholder.svg"} alt={`${team.name} Logo`} fill className="object-contain" />
           </div>
         )}
+
+        {/* Navegação entre times */}
+        {teamNames.length > 1 && (
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <button
+              onClick={prevTeam}
+              className="px-4 py-2 bg-[#f1d85a] text-[#030303] rounded-lg hover:bg-[#ffc700] transition-colors font-semibold"
+            >
+              ◀
+            </button>
+            <h3 className="text-2xl font-bold text-white min-w-[200px]">{currentTeamName.toUpperCase()}</h3>
+            <button
+              onClick={nextTeam}
+              className="px-4 py-2 bg-[#f1d85a] text-[#030303] rounded-lg hover:bg-[#ffc700] transition-colors font-semibold"
+            >
+              ▶
+            </button>
+          </div>
+        )}
+
+        {teamNames.length === 1 && (
+          <h3 className="text-2xl font-bold text-white mb-6">{currentTeamName.toUpperCase()}</h3>
+        )}
       </div>
 
-      <div className="relative flex justify-center items-center gap-2">
-        {/* Botão anterior */}
-        <button
-          ref={prevButtonRef}
-          onClick={handlePrev}
-          className="absolute left-0 z-10 bg-white text-black px-3 py-2 rounded-full shadow-lg"
-        >
-          ◀
-        </button>
+      {/* Container de cards dos jogadores */}
+      <div className="relative flex justify-center items-center">
+        {/* Mobile carousel - um card por vez */}
+        <div className="md:hidden w-full max-w-sm mx-auto px-4">
+          {currentPlayers.length > 0 && (
+            <div className="flex items-center justify-center gap-4 w-full">
+              <button
+                onClick={() => setCurrentPlayerIndex((prev) => (prev === 0 ? currentPlayers.length - 1 : prev - 1))}
+                className="p-3 bg-[#f1d85a] text-[#030303] rounded-full hover:bg-[#ffc700] transition-colors flex-shrink-0 z-10"
+              >
+                ←
+              </button>
 
-        {/* Container de scroll horizontal com padding para não cortar */}
+              <div className="flex-1 flex justify-center">
+                <div className="player-card relative w-full max-w-[280px]">
+                  <div className="w-full h-[400px] overflow-hidden rounded-tl-3xl rounded-br-3xl shadow-xl relative border border-[#ffc700]/20 transition-all duration-300">
+                    <Image
+                      src={currentPlayers[currentPlayerIndex]?.photo || "/placeholder.svg?height=400&width=300"}
+                      alt={currentPlayers[currentPlayerIndex]?.name || "Jogador"}
+                      fill
+                      className="object-cover rounded-tl-3xl rounded-br-3xl"
+                      sizes="280px"
+                      priority
+                    />
+                    <div className="absolute bottom-0 w-full bg-gradient-to-t from-[#030303]/90 to-transparent p-4 text-[#ECECEC]">
+                      <h3 className="text-lg font-bold drop-shadow-lg">{currentPlayers[currentPlayerIndex]?.name}</h3>
+                      <p className="text-xs uppercase tracking-wider drop-shadow-lg text-[#ffc700]">
+                        {currentPlayers[currentPlayerIndex]?.role}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setCurrentPlayerIndex((prev) => (prev + 1) % currentPlayers.length)}
+                className="p-3 bg-[#f1d85a] text-[#030303] rounded-full hover:bg-[#ffc700] transition-colors flex-shrink-0 z-10"
+              >
+                →
+              </button>
+            </div>
+          )}
+
+          {/* Indicadores de posição */}
+          {currentPlayers.length > 1 && (
+            <div className="flex justify-center gap-2 mt-6">
+              {currentPlayers.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentPlayerIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    index === currentPlayerIndex ? "bg-[#f1d85a]" : "bg-[#ECECEC]/30"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Desktop grid */}
         <div
           ref={cardsContainerRef}
-          className="flex gap-6 overflow-x-auto w-full max-w-[1200px] py-4 px-8"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 w-full max-w-[1200px] py-4 hidden md:grid"
         >
-          {players.map((player, index) => (
+          {currentPlayers.map((player, index) => (
             <div
-              key={index}
-              className="player-card relative min-w-[200px] sm:min-w-[220px] md:min-w-[250px]"
+              key={`${currentTeamName}-${index}`}
+              className="player-card relative"
               ref={(el) => (cardRefs.current[index] = el)}
             >
-              <div className="w-[200px] sm:w-[220px] md:w-[250px] h-[320px] sm:h-[360px] overflow-hidden rounded-tl-3xl rounded-br-3xl shadow-xl relative">
+              <div className="w-full h-[280px] sm:h-[320px] overflow-hidden rounded-tl-3xl rounded-br-3xl shadow-xl relative border border-[#ffc700]/20 hover:border-[#ffc700]/40 transition-all duration-300">
                 <Image
                   src={player.photo || "/placeholder.svg?height=400&width=300"}
                   alt={player.name}
                   fill
                   className="object-cover rounded-tl-3xl rounded-br-3xl"
-                  sizes="(max-width: 640px) 200px, (max-width: 768px) 220px, 250px"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
                 />
-                <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
+                <div className="absolute bottom-0 w-full bg-gradient-to-t from-[#030303]/90 to-transparent p-4 text-[#ECECEC]">
                   <h3 className="text-lg font-bold drop-shadow-lg">{player.name}</h3>
-                  <p className="text-sm italic drop-shadow-lg">{player.team}</p>
-                  <p className="text-xs uppercase tracking-wider drop-shadow-lg">{player.role}</p>
+                  <p className="text-xs uppercase tracking-wider drop-shadow-lg text-[#ffc700]">{player.role}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
-
-        {/* Botão próximo */}
-        <button
-          ref={nextButtonRef}
-          onClick={handleNext}
-          className="absolute right-0 z-10 bg-white text-black px-3 py-2 rounded-full shadow-lg"
-        >
-          ▶
-        </button>
       </div>
 
-      {/* Esconder scrollbar */}
-      <style jsx>{`
-        div::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
+      {/* Indicador de times */}
+      {teamNames.length > 1 && (
+        <div className="flex justify-center gap-2 mt-8">
+          {teamNames.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentTeamIndex(index)}
+              className={`w-3 h-3 rounded-full transition-colors ${
+                index === currentTeamIndex ? "bg-[#ffc700]" : "bg-[#ECECEC]/30"
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
