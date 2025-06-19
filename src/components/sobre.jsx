@@ -120,7 +120,7 @@ export default function About() {
         {/* Header - Alterada apenas a fonte do título, mantendo o conteúdo */}
         <h2
           ref={titleRef}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 md:mb-12 tracking-wider flex items-center text-black font-titles mt-8 lg:mt-12"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 md:mb-12 tracking-wider flex items-center text-white font-titles mt-8 lg:mt-12"
         >
           <span className="mr-3 sm:mr-4 leading-none">
             <Image

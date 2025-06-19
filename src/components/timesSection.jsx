@@ -13,6 +13,7 @@ if (typeof window !== "undefined") {
 
 export default function TimesSection() {
   const [selectedTeam, setSelectedTeam] = useState(null)
+  const [currentMobileIndex, setCurrentMobileIndex] = useState(0)
   const sectionRef = useRef(null)
   const titleRef = useRef(null)
   const gridRef = useRef(null)
@@ -79,22 +80,57 @@ export default function TimesSection() {
   }, [selectedTeam])
 
   return (
-    <section ref={sectionRef} id="times" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-8 text-gray-900 min-h-screen">
+    <section ref={sectionRef} id="times" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-8 text-[#ECECEC] min-h-screen">
       {selectedTeam ? (
         <TeamDetails team={selectedTeam} onBack={handleBack} />
       ) : (
         <>
-          <h2 ref={titleRef} className="text-3xl sm:text-4xl md:text-5xl mb-8 md:mb-12 text-center text-gray-900 font-bold">
+          <h2
+            ref={titleRef}
+            className="text-3xl sm:text-4xl md:text-5xl mb-8 md:mb-12 text-center text-white font-bold"
+          >
             CONHEÇA NOSSOS JOGADORES
           </h2>
 
           <div
             ref={gridRef}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10 max-w-7xl mx-auto"
+            className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10 max-w-7xl mx-auto"
           >
             {teams.map((team) => (
               <TeamCard key={team.id} team={team} onClick={handleSelect} />
             ))}
+          </div>
+
+          {/* Mobile carousel */}
+          <div className="md:hidden max-w-7xl mx-auto">
+            <div className="flex items-center justify-center gap-4">
+              <button
+                onClick={() => setCurrentMobileIndex((prev) => (prev === 0 ? teams.length - 1 : prev - 1))}
+                className="p-3 bg-[#f1d85a] text-[#030303] rounded-full hover:bg-[#ffc700] transition-colors"
+              >
+                ←
+              </button>
+              <div className="flex-1 flex justify-center">
+                <TeamCard team={teams[currentMobileIndex]} onClick={handleSelect} />
+              </div>
+              <button
+                onClick={() => setCurrentMobileIndex((prev) => (prev + 1) % teams.length)}
+                className="p-3 bg-[#f1d85a] text-[#030303] rounded-full hover:bg-[#ffc700] transition-colors"
+              >
+                →
+              </button>
+            </div>
+            <div className="flex justify-center gap-2 mt-4">
+              {teams.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentMobileIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    index === currentMobileIndex ? "bg-[#f1d85a]" : "bg-[#ECECEC]/30"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </>
       )}
