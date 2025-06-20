@@ -361,19 +361,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Floating Elements */}
-      <div
-        className="absolute top-1/4 right-1/4 w-4 h-4 bg-[#ffc700] rounded-full opacity-20 animate-float"
-        style={{ animationDelay: "0s" }}
-      />
-      <div
-        className="absolute top-1/3 left-1/4 w-6 h-6 bg-[#f1d85a] rounded-full opacity-15 animate-float"
-        style={{ animationDelay: "2s" }}
-      />
-      <div
-        className="absolute bottom-1/3 right-1/3 w-3 h-3 bg-[#ffc700] rounded-full opacity-25 animate-float"
-        style={{ animationDelay: "4s" }}
-      />
+      
     </section>
   )
 }

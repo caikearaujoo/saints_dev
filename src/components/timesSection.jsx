@@ -14,12 +14,16 @@ if (typeof window !== "undefined") {
 export default function TimesSection() {
   const [selectedTeam, setSelectedTeam] = useState(null)
   const [currentMobileIndex, setCurrentMobileIndex] = useState(0)
+  const [hoveredCardId, setHoveredCardId] = useState(null)
   const sectionRef = useRef(null)
   const titleRef = useRef(null)
   const gridRef = useRef(null)
 
   const handleSelect = (team) => setSelectedTeam(team)
   const handleBack = () => setSelectedTeam(null)
+
+  const handleCardHover = (teamId) => setHoveredCardId(teamId)
+  const handleCardLeave = () => setHoveredCardId(null)
 
   useEffect(() => {
     if (!selectedTeam) {
@@ -80,11 +84,17 @@ export default function TimesSection() {
   }, [selectedTeam])
 
   return (
-    <section ref={sectionRef} id="times" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-8 text-[#ECECEC] min-h-screen">
+    <section
+      ref={sectionRef}
+      id="times"
+      className="py-12 sm:py-16 lg:py-20 px-4 sm:px-8 text-[#ECECEC] min-h-screen flex flex-col items-center justify-center"
+    >
       {selectedTeam ? (
-        <TeamDetails team={selectedTeam} onBack={handleBack} />
+        <div className="w-full flex justify-center">
+          <TeamDetails team={selectedTeam} onBack={handleBack} />
+        </div>
       ) : (
-        <>
+        <div className="w-full max-w-7xl mx-auto flex flex-col items-center">
           <h2
             ref={titleRef}
             className="text-3xl sm:text-4xl md:text-5xl mb-8 md:mb-12 text-center text-white font-bold"
@@ -92,35 +102,51 @@ export default function TimesSection() {
             CONHEÇA NOSSOS JOGADORES
           </h2>
 
+          {/* Desktop grid - centralizada */}
           <div
             ref={gridRef}
-            className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10 max-w-7xl mx-auto"
+            className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10 w-full place-items-center"
           >
             {teams.map((team) => (
-              <TeamCard key={team.id} team={team} onClick={handleSelect} />
+              <TeamCard
+                key={team.id}
+                team={team}
+                onClick={handleSelect}
+                isHovered={hoveredCardId === team.id}
+                isOtherHovered={hoveredCardId !== null && hoveredCardId !== team.id}
+                onHover={() => handleCardHover(team.id)}
+                onLeave={handleCardLeave}
+              />
             ))}
           </div>
 
-          {/* Mobile carousel */}
-          <div className="md:hidden max-w-7xl mx-auto">
+          {/* Mobile carousel - centralizado */}
+          <div className="md:hidden w-full max-w-sm mx-auto">
             <div className="flex items-center justify-center gap-4">
               <button
                 onClick={() => setCurrentMobileIndex((prev) => (prev === 0 ? teams.length - 1 : prev - 1))}
-                className="p-3 bg-[#f1d85a] text-[#030303] rounded-full hover:bg-[#ffc700] transition-colors"
+                className="p-3 bg-[#f1d85a] text-[#030303] rounded-full hover:bg-[#ffc700] transition-colors flex-shrink-0"
               >
                 ←
               </button>
               <div className="flex-1 flex justify-center">
-                <TeamCard team={teams[currentMobileIndex]} onClick={handleSelect} />
+                <TeamCard
+                  team={teams[currentMobileIndex]}
+                  onClick={handleSelect}
+                  isHovered={false}
+                  isOtherHovered={false}
+                  onHover={() => {}}
+                  onLeave={() => {}}
+                />
               </div>
               <button
                 onClick={() => setCurrentMobileIndex((prev) => (prev + 1) % teams.length)}
-                className="p-3 bg-[#f1d85a] text-[#030303] rounded-full hover:bg-[#ffc700] transition-colors"
+                className="p-3 bg-[#f1d85a] text-[#030303] rounded-full hover:bg-[#ffc700] transition-colors flex-shrink-0"
               >
                 →
               </button>
             </div>
-            <div className="flex justify-center gap-2 mt-4">
+            <div className="flex justify-center gap-2 mt-6">
               {teams.map((_, index) => (
                 <button
                   key={index}
@@ -132,7 +158,7 @@ export default function TimesSection() {
               ))}
             </div>
           </div>
-        </>
+        </div>
       )}
     </section>
   )
