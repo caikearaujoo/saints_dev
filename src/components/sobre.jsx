@@ -124,7 +124,7 @@ export default function About() {
         >
           <span className="mr-3 sm:mr-4 leading-none">
             <Image
-              src="/imgs/logo-black.svg"
+              src="/imgs/logo.svg"
               alt="Saints Logo"
               width={40}
               height={40}
