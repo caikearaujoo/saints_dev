@@ -11,7 +11,7 @@ const teams = [
       { name: "cks", role: "iniciador/igl", photo: "/imgs/teams/valorant_ravens/cks.jpg", team: "Ravens" },
       { name: "marelo", role: "controlador", photo: "/imgs/teams/valorant_ravens/mrilo.jpg", team: "Ravens" },
       { name: "fillipin", role: "flex", photo: "/imgs/teams/valorant_ravens/fillipin.jpg", team: "Ravens" },
-      { name: "feupe", role: "flex/reserva", photo: "/imgs/teams/valorant_ravens/feupe.jpg", team: "Ravens" },
+      { name: "feupe", role: "flex/reserva", photo: "/imgs/teams/valorant_ravens/feupe.png", team: "Ravens" },
       { name: "fly", role: "iniciador", photo: "/imgs/teams/card_player.png", team: "Insane" },
       { name: "pessegao", role: "sentinela", photo: "/imgs/teams/card_player.png", team: "Insane" },
       { name: "oBigZe", role: "flex/igl", photo: "/imgs/teams/card_player.png", team: "Insane" },
@@ -70,7 +70,7 @@ const teams = [
     logo: "/imgs/games/cs2.svg",
     gameImage: "/imgs/games/csgo.png",
     players: [
-      { name: "kdd", role: "awper/igl", photo: "/imgs/teams/cs_zentih/card_player.png", team: "Zenith" },
+      { name: "kdd", role: "awper/igl", photo: "/imgs/teams/cs_zentih/kdd.png", team: "Zenith" },
       { name: "bald1", role: "rifler", photo: "/imgs/teams/cs_zentih/bald1.jpg", team: "Zenith" },
       { name: "zekii", role: "solo bomb", photo: "/imgs/teams/cs_zentih/zeki.jpg", team: "Zenith" },
       { name: "kono", role: "rifler", photo: "/imgs/teams/cs_zentih/kono.jpg", team: "Zenith" },
