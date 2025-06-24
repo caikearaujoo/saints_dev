@@ -94,7 +94,11 @@ export default function Navbar() {
           >
             Redes sociais
           </Link>
-          <JoinTeamButton className="bg-[#f1d85a] text-[#030303] hover:bg-[#ffc700] px-6 py-2 rounded-lg font-semibold transition-all duration-300 cursor-pointer" />
+          <JoinTeamButton
+  className="bg-[#f1d85a] text-[#030303] hover:bg-[#ffc700] px-6 py-2 rounded-lg font-semibold transition-all duration-300 cursor-pointer"
+  onClickExtra={() => setIsMobileMenuOpen(false)}
+/>
+
         </nav>
       )}
     </header>

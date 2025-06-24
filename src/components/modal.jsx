@@ -3,7 +3,6 @@
 import { useEffect } from "react"
 
 export function Modal({ isOpen, onClose, children }) {
-  // Prevenir scroll do body quando modal está aberto
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden"
@@ -13,14 +12,12 @@ export function Modal({ isOpen, onClose, children }) {
       document.body.style.paddingRight = "0px"
     }
 
-    // Cleanup quando componente desmonta
     return () => {
       document.body.style.overflow = "unset"
       document.body.style.paddingRight = "0px"
     }
   }, [isOpen])
 
-  // Fechar modal ao pressionar ESC
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.keyCode === 27) {
@@ -43,16 +40,14 @@ export function Modal({ isOpen, onClose, children }) {
       style={{
         backgroundColor: "rgba(3, 3, 3, 0.85)",
         backdropFilter: "blur(4px)",
-        padding: "0", // Sem padding no mobile
       }}
       onClick={onClose}
     >
       <div
-        className="relative w-full h-full sm:w-full sm:h-auto sm:max-w-4xl sm:max-h-[95vh] sm:m-4 overflow-hidden bg-[#030303] sm:rounded-2xl shadow-2xl border border-[#ffc700]/20 flex flex-col"
+        className="relative w-full sm:w-full sm:max-w-4xl sm:max-h-[95vh] sm:m-4 bg-[#030303] sm:rounded-2xl shadow-2xl border border-[#ffc700]/20 flex flex-col justify-center"
         onClick={(e) => e.stopPropagation()}
         style={{
           animation: isOpen ? "modalSlideIn 0.3s ease-out" : "none",
-          minHeight: "100vh", // Altura mínima de 100vh no mobile
         }}
       >
         {/* Botão de fechar */}
@@ -66,8 +61,10 @@ export function Modal({ isOpen, onClose, children }) {
           </svg>
         </button>
 
-        {/* Conteúdo do modal com scroll */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 pb-8">{children}</div>
+        {/* Conteúdo */}
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 pb-8 flex items-center justify-center">
+          {children}
+        </div>
       </div>
 
       <style jsx>{`
@@ -82,12 +79,11 @@ export function Modal({ isOpen, onClose, children }) {
           }
         }
 
-        /* Mobile: modal ocupa toda a tela sem margens */
         @media (max-width: 640px) {
           .fixed.inset-0 {
             padding: 0 !important;
           }
-          
+
           .fixed.inset-0 > div {
             width: 100vw !important;
             height: 100vh !important;
@@ -95,11 +91,15 @@ export function Modal({ isOpen, onClose, children }) {
             max-height: none !important;
             border-radius: 0 !important;
             margin: 0 !important;
-            min-height: 100vh !important;
+          }
+
+          .fixed.inset-0 > div > div {
+            padding-top: 32px;
+            padding-bottom: 32px;
+            justify-content: flex-start !important; /* Mobile: começa do topo */
           }
         }
 
-        /* Customizar scrollbar */
         .overflow-y-auto::-webkit-scrollbar {
           width: 6px;
         }
