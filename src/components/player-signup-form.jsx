@@ -100,7 +100,7 @@ export function PlayerSignupForm({ onBack }) {
   }
 
   return (
-    <div className="mx-auto w-full max-w-2xl rounded-none bg-black p-4 md:rounded-2xl md:p-8 text-white mt-20"> 
+    <div className="mx-auto w-full max-w-2xl rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black mt-20">
       <div className="flex items-center mb-2">
         <button
           onClick={onBack}
