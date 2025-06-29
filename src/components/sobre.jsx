@@ -176,7 +176,7 @@ export default function About() {
          
             <AboutJoinButton
               ref={buttonRef}
-              className="absolute -bottom-7 right-[-7px] sm:-right-6 z-20 bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wide shadow-xl transition-all transform hover:scale-105 btn-clipped-left btn-3d-effect cursor-pointer"
+              className="absolute -bottom-7 right-[-7px] sm:-right-6 z-20 bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wide shadow-xl transition-all transform hover:scale-105 btn-clipped-left btn-3d-effect cursor-pointer btn-clipped-left"
             >
               FAÇA PARTE DO TIME
             </AboutJoinButton>
