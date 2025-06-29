@@ -31,7 +31,7 @@ export default function Footer() {
   }, [])
 
   const developers = [
-    { name: "Maria Fernanda", github: "https://github.com/diskmari", role: "Frontend Developer" },
+    { name: "Maria Fernanda", github: "https://github.com/marifermenezes", role: "Frontend Developer" },
     { name: "Caike Araújo", github: "https://github.com/caikearaujoo", role: "Fullstack Developer" },
     { name: "Rafael", github: "https://github.com/hydrenzinho", role: "UI/UX Designer" },
   ]
