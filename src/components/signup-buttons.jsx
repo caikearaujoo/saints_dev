@@ -110,6 +110,9 @@ export function AboutJoinButton({ className, children }) {
           className ||
           "absolute -bottom-7 right-[-7px] sm:-right-6 z-20 bg-[#f1d85a] hover:bg-[#ffc700] text-[#030303] font-bold px-8 py-3 rounded-md text-sm uppercase tracking-wide shadow-xl transition-all transform hover:scale-105 btn-clipped-left btn-3d-effect cursor-pointer"
         }
+        style={{
+          clipPath: "polygon(0 0, 100% 0, 92% 100%, 0 100%)",
+        }}
       >
         {children || "FAÇA PARTE DO TIME"}
       </button>
