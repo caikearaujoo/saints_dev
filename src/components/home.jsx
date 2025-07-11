@@ -21,7 +21,6 @@ export default function Hero() {
     "/imgs/insane.jpg",
     "/imgs/wr.jpg",
     "/imgs/ravens 2.png",
-    "/imgs/rafa_luiz.jpg",
     "/imgs/time_cs.jpg",
     "/imgs/meninas1.jpg",
     "/imgs/ravens 1.jpg",
