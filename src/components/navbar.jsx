@@ -72,8 +72,8 @@ export default function Navbar() {
           Times
         </Link>
         <Link
-          href="#redes-sociais"
-          onClick={(e) => handleSmoothScroll(e, "redes-sociais")}
+          href="#footer"
+          onClick={(e) => handleSmoothScroll(e, "footer")}
           className="hover:text-[#ffc700] transition-colors"
         >
           Redes sociais
