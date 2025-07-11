@@ -17,9 +17,14 @@ export default function Hero() {
   const subtitleRef = useRef(null)
 
   const teamImages = [
-    "/imgs/img1.jpg", "/imgs/img2.jpg", "/imgs/mrilo e cks.png",
-    "/imgs/ravens 1.png", "/imgs/ravens 2.png", "/imgs/rafa_luiz.jpg",
-    "/imgs/time_cs.jpg", "/imgs/meninas1.jpg",
+    "/imgs/brawl.jpg",
+    "/imgs/insane.jpg",
+    "/imgs/wr.jpg",
+    "/imgs/ravens 2.png",
+    "/imgs/time_cs.jpg",
+    "/imgs/meninas1.jpg",
+    "/imgs/ravens 1.jpg",
+    "/imgs/staff.jpg",
   ]
 
   useEffect(() => {
