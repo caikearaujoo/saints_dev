@@ -13,7 +13,7 @@ const teams = [
       { name: "fillipin", role: "flex", photo: "/imgs/teams/valorant_ravens/fillipin.jpg", team: "Ravens" },
       { name: "feupe", role: "flex/reserva", photo: "/imgs/teams/valorant_ravens/feupe.png", team: "Ravens" },
       { name: "cjr", role: "manager", photo: "/imgs/teams/valorant_ravens/cjr.jpg", team: "Ravens" },
-      { name: "fly", role: "iniciador", photo: "/imgs/teams/valorant_insane/fly.png", team: "Insane" },
+      { name: "fly", role: "iniciador", photo: "/imgs/teams/valorant_insane/Fly.png", team: "Insane" },
       { name: "oBigZe", role: "flex/igl", photo: "/imgs/teams/valorant_insane/oBigZe.png", team: "Insane" },
       { name: "girafa", role: "controlador", photo: "/imgs/teams/valorant_insane/girafa.jpg", team: "Insane" },
       { name: "drd", role: "duelista", photo: "/imgs/teams/valorant_insane/Drd .jpg", team: "Insane" },
