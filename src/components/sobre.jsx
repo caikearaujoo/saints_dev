@@ -139,7 +139,7 @@ export default function About() {
           {/* Text Column - SEM ALTERAÇÕES */}
           <div
             ref={textRef}
-            className="w-full lg:w-[50%] xl:max-w-[600px] space-y-3 sm:space-y-4 text-white-800 leading-relaxed text-sm sm:text-base md:text-lg pl-0 lg:pl-4"
+            className="w-full lg:w-[50%] xl:max-w-[600px] space-y-2 sm:space-y-4 text-white-800 leading-snug sm:leading-relaxed text-sm sm:text-base md:text-lg pl-0 lg:pl-4"
           >
             <p>
               A UFU Saints é a atlética de e-sports da Universidade Federal de Uberlândia. Fundada em 2024, surgiu da
