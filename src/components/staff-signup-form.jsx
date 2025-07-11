@@ -95,13 +95,13 @@ export function StaffSignupForm({ onBack }) {
   }
 
   return (
-    <div className="mx-auto w-full max-w-2xl rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black">
-      <div className="flex items-center mb-6">
+    <div className="mx-auto w-full h-screen max-w-2xl rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black mt-20">
+      <div className="flex items-center mb-2">
         <button
           onClick={onBack}
           className="flex items-center text-neutral-600 dark:text-neutral-300 hover:text-neutral-800 dark:hover:text-neutral-100 transition-colors"
         >
-          <IconArrowLeft className="h-4 w-4 mr-2" />
+          <IconArrowLeft className="h-4 w-4 mr-1" />
           Voltar
         </button>
       </div>
@@ -111,13 +111,13 @@ export function StaffSignupForm({ onBack }) {
         </div>
         <div>
           <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200">Candidatura para Staff</h2>
-          <p className="text-sm text-neutral-600 dark:text-neutral-300">Preencha suas informações para se candidatar</p>
+          <p className="text-yellow-400 hover:text-yellow-300 transition-colors">Preencha suas informações para se candidatar</p>
         </div>
       </div>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6 pb-5">
         {/* Dados Pessoais */}
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 border-b border-neutral-200 dark:border-neutral-700 pb-2">
+          <h3 className="text-lg font-semibold text-neutral-800 dark:text-yellow-400 border-b border-neutral-200 dark:border-neutral-700 pb-2">
             Dados Pessoais
           </h3>
 
@@ -220,7 +220,7 @@ export function StaffSignupForm({ onBack }) {
 
         {/* Dados do Staff */}
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 border-b border-neutral-200 dark:border-neutral-700 pb-2">
+          <h3 className="text-lg font-semibold text-yellow-400 border-b border-yellow-600 pb-2">
             Informações de Staff
           </h3>
 

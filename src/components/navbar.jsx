@@ -1,39 +1,57 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import { useState } from "react"
-import { FiMenu, FiX } from "react-icons/fi"
-import { JoinTeamButton } from "./signup-buttons"
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
+import { JoinTeamButton } from "./signup-buttons";
+import { Modal } from "./modal";
+import { SignupFlow } from "./signup-flow";
 
 export default function Navbar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const headerClasses = `fixed top-0 left-0 w-full px-4 sm:px-10 py-4 flex items-center justify-between z-50 bg-[#030303]/30 backdrop-blur-none`
+  const headerClasses = `fixed top-0 left-0 w-full px-4 sm:px-10 py-4 flex items-center justify-between z-50 bg-[#030303]/30 backdrop-blur-none`;
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleOpenModal = () => {
+    setIsMobileMenuOpen(false);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleSmoothScroll = (e, targetId) => {
-    e.preventDefault()
-    const targetElement = document.getElementById(targetId)
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
     if (targetElement) {
-      const offsetTop = targetElement.offsetTop - 80 // Ajuste para altura da navbar
+      const offsetTop = targetElement.offsetTop - 80; // Ajuste para altura da navbar
       window.scrollTo({
         top: offsetTop,
         behavior: "smooth",
-      })
+      });
     }
-    setIsMobileMenuOpen(false)
-  }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header className={headerClasses}>
       {/* LOGO */}
       <div className="relative w-[120px] h-[40px]">
         <Link href="/">
-          <Image src="/imgs/logo-saints.svg" alt="UFU Saints" fill style={{ objectFit: "contain" }} priority />
+          <Image
+            src="/imgs/logo-saints.svg"
+            alt="UFU Saints"
+            fill
+            style={{ objectFit: "contain" }}
+            priority
+          />
         </Link>
       </div>
 
@@ -65,7 +83,11 @@ export default function Navbar() {
 
       {/* Botão Hamburger - Mobile */}
       <div className="md:hidden">
-        <button onClick={toggleMobileMenu} aria-label="Abrir menu" className="text-[#ECECEC] focus:outline-none">
+        <button
+          onClick={toggleMobileMenu}
+          aria-label="Abrir menu"
+          className="text-[#ECECEC] focus:outline-none"
+        >
           {isMobileMenuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
         </button>
       </div>
@@ -88,19 +110,27 @@ export default function Navbar() {
             Times
           </Link>
           <Link
-            href="#redes-sociais"
-            onClick={(e) => handleSmoothScroll(e, "redes-sociais")}
+            href="#footer"
+            onClick={(e) => handleSmoothScroll(e, "footer")}
             className="hover:text-[#ffc700] transition-colors"
           >
             Redes sociais
           </Link>
-          <JoinTeamButton
-  className="bg-[#f1d85a] text-[#030303] hover:bg-[#ffc700] px-6 py-2 rounded-lg font-semibold transition-all duration-300 cursor-pointer"
-  onClickExtra={() => setIsMobileMenuOpen(false)}
-/>
 
+          <button
+            onClick={handleOpenModal}
+            className={
+              "bg-[#f1d85a] text-[#030303] hover:bg-[#ffc700] px-6 py-2 rounded-lg font-semibold transition-all duration-300 cursor-pointer"
+            }
+          >
+            Faça parte do time
+          </button>
         </nav>
       )}
+
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+        <SignupFlow />
+      </Modal>
     </header>
-  )
+  );
 }
