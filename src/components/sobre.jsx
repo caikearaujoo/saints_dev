@@ -141,23 +141,24 @@ export default function About() {
             ref={textRef}
             className="w-full lg:w-[50%] xl:max-w-[600px] space-y-2 sm:space-y-4 text-white-800 leading-snug sm:leading-relaxed text-sm sm:text-base md:text-lg pl-0 lg:pl-4"
           >
-            <p>
-              A UFU Saints é a atlética de e-sports da Universidade Federal de Uberlândia. Fundada em 2024, surgiu da
-              vontade de criar um espaço onde jogar fosse também se <strong>conectar, competir e crescer</strong> em
-              equipe. O projeto nasceu como uma nova fase da antiga atlética Santa Bronx, com identidade renovada, novos
-              objetivos e muito mais atitude.
-            </p>
-            <p>
-              Hoje, a UFU Saints <strong>é mais que um time: é uma comunidade</strong>. Um grupo de estudantes que
-              acredita que os jogos eletrônicos podem ser um meio de inclusão, protagonismo e inovação dentro da
-              universidade pública. Organizamos treinos, lives, eventos, campeonatos e conteúdos que aproximam a galera
-              gamer — da UFU e de fora dela. Cada membro contribui para transformar nosso servidor em um verdadeiro hub
-              de criatividade, amizade e competitividade.
-            </p>
-            <p>
-              Nosso lema? <strong>Jogar junto, crescer junto</strong>. E isso vale tanto dentro das partidas quanto fora
-              delas.
-            </p>
+       <p>
+          A <strong>UFU Saints</strong> é a atlética de e-sports da Universidade Federal de Uberlândia, fundada em 2024 com o propósito de criar um ambiente onde jogar também significa <strong>conectar, competir e evoluir</strong>.<br />
+          O projeto surgiu como uma nova fase da antiga Santa Bronx, trazendo uma identidade renovada, novos objetivos e ainda mais atitude.
+        </p>
+
+        <p>
+          Mais do que um time, somos <strong>uma comunidade</strong>.<br />
+          Um grupo de estudantes que acredita no poder dos jogos para promover inclusão, protagonismo e inovação dentro da universidade.<br />
+          Organizamos treinos, lives, eventos, campeonatos e conteúdos que aproximam a galera gamer — da UFU e além.<br />
+          Cada integrante fortalece nosso servidor como um verdadeiro hub de criatividade, amizade e competitividade.
+        </p>
+
+        <p>
+          Nosso lema? <strong>Jogar junto, crescer junto</strong>.<br />
+          Dentro e fora das partidas.
+        </p>
+
+
           </div>
 
           {/* Image Column */}
