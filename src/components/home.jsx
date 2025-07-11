@@ -17,15 +17,26 @@ export default function Hero() {
   const subtitleRef = useRef(null)
 
   const teamImages = [
-    "/imgs/brawl.jpg",
-    "/imgs/insane.jpg",
-    "/imgs/wr.jpg",
-    "/imgs/ravens 2.png",
-    "/imgs/time_cs.jpg",
-    "/imgs/meninas1.jpg",
-    "/imgs/ravens 1.jpg",
-    "/imgs/staff.jpg",
+    "/imgs/home/brawl.jpg",
+    "/imgs/home/insane.jpg",
+    "/imgs/home/wr.jpg",
+    "/imgs/home/ravens 2.png",
+    "/imgs/home/time_cs.jpg",
+    "/imgs/home/meninas1.jpg",
+    "/imgs/home/ravens 1.jpg",
+    "/imgs/home/staff.jpg",
+    "/imgs/home/aces1.jpg",
+    "/imgs/home/lolaces1.jpg",
+    "/imgs/home/ravens2.jpg",
+    "/imgs/home/ravens3.jpg",
+    "/imgs/home/blossom2.jpg",
+    "/imgs/home/saints3.jpg",
+
   ]
+
+const middleIndex = Math.ceil(teamImages.length / 2)
+const leftImages = teamImages.slice(0, middleIndex)
+const rightImages = teamImages.slice(middleIndex)
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
@@ -49,8 +60,8 @@ export default function Hero() {
           gsap.to(scrollingImages2Ref.current, { yPercent: -50, ease: "none", scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: 1 } })
 
           // 2. Animações Automáticas (quando no topo)
-          const autoScroll1 = gsap.to(scrollingImagesRef.current, { y: "-100%", duration: 40, ease: "none", repeat: -1, repeatRefresh: true })
-          const autoScroll2 = gsap.to(scrollingImages2Ref.current, { y: "-100%", duration: 45, ease: "none", repeat: -1, repeatRefresh: true })
+          const autoScroll1 = gsap.to(scrollingImagesRef.current, { yPercent: -66.66, duration: 40, ease: "none", repeat: -1 })
+          const autoScroll2 = gsap.to(scrollingImages2Ref.current, { yPercent: -66.66, duration: 45, ease: "none", repeat: -1 })
 
           // 3. Interruptor Híbrido
           ScrollTrigger.create({
@@ -128,11 +139,11 @@ export default function Hero() {
           </div>
           <div className="relative h-full flex items-center justify-end">
             <div className="relative w-full max-w-2xl h-full overflow-hidden">
-                <div ref={scrollingImagesRef} className="absolute top-0 left-0 w-[48%] flex flex-col space-y-6" style={{ height: "200%" }}>
-                  {[...teamImages, ...teamImages].map((image, index) => (<div key={`col1-${index}`} className="team-image relative cursor-pointer rounded-lg overflow-hidden shadow-lg flex-shrink-0" style={{ height: "240px", aspectRatio: "3/2" }}><Image src={image || "/placeholder.svg"} alt={`Team ${index + 1}`} fill className="object-cover" sizes="30vw" /><div className="absolute inset-0 bg-gradient-to-t from-[#030303]/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg" /></div>))}
+                <div ref={scrollingImagesRef} className="absolute top-0 left-0 w-[48%] flex flex-col space-y-6" style={{ height: "300%" }}>
+                  {[...rightImages, ...rightImages, ...rightImages].map((image, index) => (<div key={`col1-${index}`} className="team-image relative cursor-pointer rounded-lg overflow-hidden shadow-lg flex-shrink-0" style={{ height: "240px", aspectRatio: "3/2" }}><Image src={image || "/placeholder.svg"} alt={`Team ${index + 1}`} fill className="object-cover" sizes="30vw" /><div className="absolute inset-0 bg-gradient-to-t from-[#030303]/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg" /></div>))}
                 </div>
-                <div ref={scrollingImages2Ref} className="absolute top-0 right-0 w-[48%] flex flex-col space-y-6" style={{ height: "200%", transform: "translateY(-25%)" }}>
-                  {[...teamImages, ...teamImages].map((image, index) => (<div key={`col2-${index}`} className="team-image relative cursor-pointer rounded-lg overflow-hidden shadow-lg flex-shrink-0" style={{ height: "220px", aspectRatio: "3/2" }}><Image src={image || "/placeholder.svg"} alt={`Team ${index + 5}`} fill className="object-cover" sizes="30vw" /><div className="absolute inset-0 bg-gradient-to-t from-[#030303]/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" /></div>))}
+                <div ref={scrollingImages2Ref} className="absolute top-0 right-0 w-[48%] flex flex-col space-y-6" style={{ height: "300%", transform: "translateY(-25%)" }}>
+                  {[...leftImages, ...leftImages, ...leftImages].map((image, index) => (<div key={`col2-${index}`} className="team-image relative cursor-pointer rounded-lg overflow-hidden shadow-lg flex-shrink-0" style={{ height: "220px", aspectRatio: "3/2" }}><Image src={image || "/placeholder.svg"} alt={`Team ${index + 5}`} fill className="object-cover" sizes="30vw" /><div className="absolute inset-0 bg-gradient-to-t from-[#030303]/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" /></div>))}
                 </div>
                 <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#030303] to-transparent z-10 pointer-events-none" /><div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#030303] to-transparent z-10 pointer-events-none" />
             </div>
