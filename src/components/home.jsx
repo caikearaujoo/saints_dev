@@ -191,7 +191,22 @@ const rightImages = teamImages.slice(middleIndex)
         <a href="https://discord.gg/YdfQ8jng" className="cursor-pointer hover:text-[#f1d85a] transition-all duration-300 transform hover:scale-125 p-2 rounded-full hover:bg-[#ffc700]/10"><FaDiscord /></a>
         <a href="https://www.twitch.tv/ufuesports" className="hover:text-[#f1d85a] transition-all duration-300 transform hover:scale-125 p-2 rounded-full hover:bg-[#ffc700]/10"><FaTwitch /></a>
         <a href="https://www.instagram.com/ufuesports/" className="hover:text-[#f1d85a] transition-all duration-300 transform hover:scale-125 p-2 rounded-full hover:bg-[#ffc700]/10"><FaInstagram /></a>
-        <a href="https://x.com/ufuesports" className="hover:text-[#ECECEC] transition-all duration-300 transform hover:scale-125 p-2 rounded-full hover:bg-[#ffc700]/10"><FaTimes /></a>
+        <a
+          href="https://x.com/ufuesports"
+          className="hover:text-[#ECECEC] transition-all duration-300 transform hover:scale-125 p-2 rounded-full hover:bg-[#ffc700]/10"
+          aria-label="Twitter/X"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-6 h-6"
+          >
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </a>
       </div>
 
       {/* --- INDICADOR DE SCROLL (Visível em todas as telas) --- */}
