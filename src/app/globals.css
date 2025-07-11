@@ -17,3 +17,25 @@ body {
   --secondary-yellow: #f1d85a;
   --black-color: #030303;
 }
+
+/* Estilo para navegadores baseados em WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px;               /* largura da barra */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;  /* fundo da "trilha" */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffc700; /* cor amarela */
+  border-radius: 10px;
+  border: 3px solid transparent; /* espaço ao redor do polegar */
+  background-clip: content-box;
+}
+
+/* Para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ffc700 transparent;
+}
