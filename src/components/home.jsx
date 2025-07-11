@@ -17,20 +17,20 @@ export default function Hero() {
   const subtitleRef = useRef(null)
 
   const teamImages = [
-    "/imgs/home/brawl.jpg",
+    "/imgs/home/ravens 1.jpg",
     "/imgs/home/insane.jpg",
+    "/imgs/home/lolaces1.jpg",
     "/imgs/home/wr.jpg",
+    "/imgs/home/meninas1.jpg",
     "/imgs/home/ravens 2.png",
     "/imgs/home/time_cs.jpg",
-    "/imgs/home/meninas1.jpg",
-    "/imgs/home/ravens 1.jpg",
     "/imgs/home/staff.jpg",
     "/imgs/home/aces1.jpg",
-    "/imgs/home/lolaces1.jpg",
     "/imgs/home/ravens2.jpg",
     "/imgs/home/ravens3.jpg",
     "/imgs/home/blossom2.jpg",
     "/imgs/home/saints3.jpg",
+    "/imgs/home/brawl.jpg",
 
   ]
 
@@ -88,7 +88,8 @@ const rightImages = teamImages.slice(middleIndex)
           // 1. Animação de Parallax
           if (mobileImagesRef.current && mobileImagesRef.current.parentElement) {
             gsap.to(mobileImagesRef.current, {
-              y: () => -(mobileImagesRef.current.offsetHeight - mobileImagesRef.current.parentElement.offsetHeight),
+              y: () =>
+               -((mobileImagesRef.current.offsetHeight - mobileImagesRef.current.parentElement.offsetHeight) * 0.3),
               ease: "none",
               scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: true },
             })
