@@ -34,6 +34,7 @@ export default function Footer() {
     { name: "Maria Fernanda", github: "https://github.com/marifermenezes", role: "Frontend Developer" },
     { name: "Caike Araújo", github: "https://github.com/caikearaujoo", role: "Fullstack Developer" },
     { name: "Rafael", github: "https://github.com/hydrenzinho", role: "UI/UX Designer" },
+    { name: "Clara Galvão", github: "https://github.com/Claragalvs", role: "UI/UX Designer" },
   ]
 
   return (
