@@ -9,9 +9,19 @@ dotenv.config();
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
+// No seu arquivo server.js
+
 const app = express();
+
+// Configuração de CORS para permitir acesso do seu site na Vercel
+const frontendURL = 'https://saints-dev.vercel.app';
+
+app.use(cors({
+  origin: frontendURL
+}));
+
+// Garanta que esta linha venha DEPOIS da configuração do cors
 app.use(express.json());
-app.use(cors());
 
 // ... resto das suas rotas ...
 const users = []
