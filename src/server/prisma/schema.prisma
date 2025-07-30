@@ -1,18 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
-// A FORMA CORRETA E PADRÃO
 generator client {
   provider = "prisma-client-js"
 }
-
-//Foram criadas VIEWS para poder visualizar os Player e Staff completos, com todas as informacoes de Pessoa!
-// Para realizar as consultas, basta utilizazr:
-// SELECT * FROM "StaffCompleto"; --- Para Staff
-// SELECT * FROM "PlayerCompleto"; --- Para Player
 
 datasource db {
   provider = "postgresql"
@@ -20,42 +8,37 @@ datasource db {
 }
 
 model Pessoa {
-  id             Int      @id @default(autoincrement())
-  nome           String
-  email          String
-  idade          Int
-  matricula      String
-  curso          String
-  periodo        Int
-  telefone       String
-  dataInscricao  DateTime @default(now())
-
-  // Especialização/generalização (herança)
-  staff          Staff[]
-  player         Player[]
+  nome          String
+  email         String
+  idade         Int
+  matricula     String
+  curso         String
+  periodo       Int
+  telefone      String
+  dataInscricao DateTime @default(now())
+  id            Int      @id @default(autoincrement())
+  player        Player[]
+  staff         Staff[]
 }
 
 model Staff {
-  id               Int     @id @default(autoincrement())
-  pessoaId         Int
-  areaInteresse    String
-  habilidades      String
-  experiencia      String
-  disponibilidade  String
-
-  pessoa           Pessoa  @relation(fields: [pessoaId], references: [id])
+  areaInteresse   String
+  habilidades     String
+  experiencia     String
+  disponibilidade String
+  id              Int    @id @default(autoincrement())
+  pessoaId        Int
+  pessoa          Pessoa @relation(fields: [pessoaId], references: [id])
 }
 
 model Player {
-  id               Int     @id @default(autoincrement())
-  pessoaId         Int
-  modalidade       String
-  role             String
-  eloRanking       String
-  experiencia      String?
-  disponibilidade  String
-  linkPerfil       String?
-
-  pessoa           Pessoa  @relation(fields: [pessoaId], references: [id])
+  modalidade      String
+  role            String
+  eloRanking      String
+  experiencia     String?
+  disponibilidade String
+  linkPerfil      String?
+  id              Int     @id @default(autoincrement())
+  pessoaId        Int
+  pessoa          Pessoa  @relation(fields: [pessoaId], references: [id])
 }
-

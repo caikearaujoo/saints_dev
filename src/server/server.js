@@ -1,14 +1,19 @@
-import express from 'express'
-import cors from 'cors'
-import api from '../services/api.js';
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import express from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
+
+// 1. Carregue as variáveis de ambiente PRIMEIRO de tudo
 dotenv.config();
 
-const app = express()
-app.use(express.json())
-app.use(cors())
+// 2. SÓ DEPOIS, importe e instancie o Prisma
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
+
+const app = express();
+app.use(express.json());
+app.use(cors());
+
+// ... resto das suas rotas ...
 const users = []
 
 //ROTAS PARA PESSOA
@@ -88,18 +93,30 @@ app.delete('/usuarios/:id', async (req, res) => {
 //ROTAS PARA PLAYER E STAFF
 // Criar Player
 app.post('/players', async (req, res) => {
-    const player = await prisma.player.create({
-        data: {
-            //pessoaId: Number(req.body.pessoaId),
-            modalidade: req.body.modalidade,
-            role: req.body.role,
-            eloRanking: req.body.eloRanking,
-            experiencia: req.body.experiencia,
-            disponibilidade: req.body.disponibilidade,
-            linkPerfil: req.body.linkPerfil
-        }
-    });
-    res.status(201).json(player);
+    try {
+        const player = await prisma.player.create({
+            data: {
+                // Campos do Player
+                modalidade: req.body.modalidade,
+                role: req.body.role,
+                eloRanking: req.body.eloRanking,
+                experiencia: req.body.experiencia,
+                disponibilidade: req.body.disponibilidade,
+                linkPerfil: req.body.linkPerfil,
+
+                // Conectando à Pessoa existente
+                pessoa: {
+                    connect: {
+                        id: Number(req.body.pessoaId)
+                    }
+                }
+            }
+        });
+        res.status(201).json(player);
+    } catch (error) {
+        console.error("Erro ao criar player:", error);
+        res.status(500).json({ error: "Erro ao criar player." });
+    }
 });
 
 // Criar Staff
