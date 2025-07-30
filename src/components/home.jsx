@@ -164,7 +164,7 @@ const rightImages = teamImages.slice(middleIndex)
               <p className="text-base md:text-lg text-[#ECECEC] leading-relaxed mb-6 font-rajdhani">A atlética de e-sports da UFU. Conectando, competindo e crescendo em equipe.</p>
               <div className="flex flex-col items-center gap-4">
                 <div className="flex flex-col sm:flex-row justify-center gap-4 w-full">
-                  <HeroMobileJoinButton />
+          
                   <button onClick={() => { const aboutSection = document.getElementById("sobre-nos"); if (aboutSection) { aboutSection.scrollIntoView({ behavior: "smooth" }) } }} className="border-2 border-[#f1d85a] text-[#f1d85a] hover:bg-[#f1d85a] hover:text-[#030303] px-8 py-3 rounded-lg font-semibold transition-all duration-300 font-rajdhani cursor-pointer">Quem somos</button>
                 </div>
                 <div className="flex flex-row gap-6 text-[#ffc700] text-2xl mt-8">
