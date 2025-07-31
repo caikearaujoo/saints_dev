@@ -27,78 +27,37 @@ Este projeto é uma plataforma full stack desenvolvida para a atlética de e-spo
 ## 🧱 Estrutura do Projeto
 
 ```plaintext
-.
-├── .next/                 # Build gerado pelo Next.js
-├── node_modules/          # Dependências do projeto
-├── prisma/                # Schema e migrações do banco (Prisma)
-│   ├── migrations/
-│   └── schema.prisma
+SAINTS_DEV/
+├── .next/                   # Build gerado pelo Next.js (não editar)
+├── node_modules/            # Dependências do projeto
 ├── public/
-│   └── imgs/              # Imagens públicas
+│   └── imgs/                # Imagens públicas acessíveis diretamente via URL
+│       ├── games/           # Imagens específicas da seção "games"
+│       ├── home/            # Imagens utilizadas na home
+│       └── teams/           # Logos e imagens dos times
 ├── src/
-│   ├── app/               # Rotas e layout do Next.js (App Router)
-│   ├── components/        # Componentes reutilizáveis
-│   ├── data/              # Arquivos de dados (mocks, seeds, etc.)
-│   ├── fonts/             # Fontes utilizadas no projeto
-│   ├── generated/         # Código gerado automaticamente (ex: Prisma Client)
-│   ├── lib/               # Utilitários e configuração de libs
-│   ├── services/          # Funções de serviço e lógica de negócio
-│   ├── styles/            # Estilização global e temas
-│   └── server.js          # Configuração opcional do servidor
-├── .env                   # Variáveis de ambiente (NÃO versionar)
-├── .gitignore             # Arquivos e pastas ignorados pelo Git
-├── README.md              # Documentação do projeto
-├── package.json           # Dependências e scripts
-├── package-lock.json      # Lockfile do npm
-├── tailwind.config.js     # Configuração do TailwindCSS
-├── postcss.config.js      # Configuração do PostCSS
-├── next.config.mjs        # Configuração do Next.js
-├── jsconfig.json          # Path aliases para facilitar imports
-└── components.json        # Configurações de UI (se aplicável)
+│   ├── app/                 # Estrutura de rotas baseada no App Router do Next.js
+│   ├── components/          # Componentes reutilizáveis da interface
+│   ├── data/                # Arquivos de dados locais (mocks, arquivos JSON, etc.)
+│   ├── fonts/               # Arquivos de fontes utilizados no projeto
+│   ├── generated/           # Código gerado automaticamente (ex: Prisma Client)
+│   ├── lib/                 # Funções auxiliares, utilitários e configuração de libs
+│   ├── services/
+│   │   └── api.js           # Arquivo central para requisições HTTP (ex: com Axios)
+│   ├── styles/              # Estilos globais, Tailwind e configurações de tema
+│   └── server/              # Lógica relacionada ao backend (ex: middlewares, handlers)
+├── .env                     # Variáveis de ambiente (NÃO versionar)
+├── .gitignore               # Arquivos e pastas ignoradas pelo Git
+├── README.md                # Documentação principal do projeto
+├── package.json             # Dependências, scripts e metadados do projeto
+├── package-lock.json        # Lockfile do npm para controle de versões
+├── tailwind.config.js       # Configuração do TailwindCSS
+├── postcss.config.js        # Configuração do PostCSS
+├── next.config.mjs          # Configurações específicas do Next.js
+├── jsconfig.json            # Configuração de path aliases no projeto
+└── components.json          # (Opcional) Configurações relacionadas à UI (ex: Storybook)
 
 
----
-
-## 🧪 Como Rodar Localmente
-
-> ⚠️ Você precisa ter [Node.js](https://nodejs.org/) e [npm](https://www.npmjs.com/) instalados.
-
-### 1. Clone o repositório
-
-```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
-```
-
-### 2. Instale as dependências
-
-```bash
-npm install
-```
-
-### 3. Configure as variáveis de ambiente
-
-Crie um arquivo `.env.local` com o seguinte conteúdo:
-
-```env
-DATABASE_URL="postgresql://postgres:SUA_SENHA@db.xxxxx.supabase.co:5432/postgres"
-```
-
-### 4. Aplique o schema no banco de dados
-
-```bash
-npx prisma db push
-# ou se preferir iniciar com migration:
-# npx prisma migrate dev --name init
-```
-
-### 5. Rode o projeto
-
-```bash
-npm run dev
-```
-
-Abra [http://localhost:3000](http://localhost:3000) no navegador para ver a aplicação.
 
 ---
 
