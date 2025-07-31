@@ -14,12 +14,13 @@ Este projeto é uma plataforma full stack desenvolvida para a atlética de e-spo
 | **TailwindCSS** | Estilização rápida e moderna com classes utilitárias, ideal para prototipação e produção. |
 | **JavaScript**  | Linguagem principal do front-end e utilizada também no back-end com Node.js. |
 | **Node.js**     | Ambiente de execução server-side para o backend do Next.js. |
-| **Express**     | Utilizado para usar o server do next.js. |
+| **Express**     | Utilizado para usar o server do Next.js. |
 | **Prisma**      | ORM moderno que facilita a comunicação com banco de dados relacional e modelagem clara dos dados. |
 | **PostgreSQL**  | Banco de dados relacional robusto e open source, ideal para dados estruturados. |
 | **Supabase**    | Banco em nuvem baseado em PostgreSQL, usado para hospedar os dados com praticidade e escalabilidade. |
 | **Axios**       | Cliente HTTP usado para comunicação entre front-end e back-end. |
 | **GSAP**        | Biblioteca de animações para dar vida à interface com transições suaves. |
+| **Render**      | Plataforma de hospedagem cloud usada para disponibilizar a API de forma escalável e com deploy contínuo. |
 
 ---
 
