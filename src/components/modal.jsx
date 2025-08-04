@@ -3,18 +3,15 @@
 import { useEffect } from "react"
 
 export function Modal({ isOpen, onClose, children }) {
+  // Hooks useEffect permanecem os mesmos
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden"
-      document.body.style.paddingRight = "0px"
     } else {
       document.body.style.overflow = "unset"
-      document.body.style.paddingRight = "0px"
     }
-
     return () => {
       document.body.style.overflow = "unset"
-      document.body.style.paddingRight = "0px"
     }
   }, [isOpen])
 
@@ -44,27 +41,27 @@ export function Modal({ isOpen, onClose, children }) {
       onClick={onClose}
     >
       <div
-        className="relative w-full sm:w-full sm:max-w-4xl sm:max-h-[95vh] sm:m-4 bg-[#030303] sm:rounded-2xl shadow-2xl border border-[#ffc700]/20 flex flex-col justify-center"
+        className="relative flex h-screen w-full flex-col justify-center bg-[#030303] shadow-2xl sm:h-auto sm:max-h-[95vh] sm:max-w-4xl sm:m-4 sm:rounded-2xl border-t sm:border border-[#ffc700]/20"
         onClick={(e) => e.stopPropagation()}
         style={{
           animation: isOpen ? "modalSlideIn 0.3s ease-out" : "none",
         }}
       >
-        {/* Botão de fechar */}
+        {/* 1. Área de conteúdo vem primeiro */}
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 pb-8">
+          {children}
+        </div>
+
+        {/* 2. Botão de fechar vem por último para garantir que fique por cima */}
         <button
           onClick={onClose}
-          className="cursor-pointer absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-[#ECECEC]/10 hover:bg-[#ECECEC]/20 transition-colors"
+          className="cursor-pointer absolute top-5 right-5 md:top-4 md:right-4 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-[#ECECEC]/10 hover:bg-[#ECECEC]/20 transition-colors"
           aria-label="Fechar modal"
         >
           <svg className="w-6 h-6 text-[#ECECEC]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-
-        {/* Conteúdo */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 pb-8 flex items-center justify-center">
-          {children}
-        </div>
       </div>
 
       <style jsx>{`
@@ -78,45 +75,11 @@ export function Modal({ isOpen, onClose, children }) {
             transform: scale(1) translateY(0);
           }
         }
-
-        @media (max-width: 640px) {
-          .fixed.inset-0 {
-            padding: 0 !important;
-          }
-
-          .fixed.inset-0 > div {
-            width: 100vw !important;
-            height: 100vh !important;
-            max-width: none !important;
-            max-height: none !important;
-            border-radius: 0 !important;
-            margin: 0 !important;
-          }
-
-          .fixed.inset-0 > div > div {
-            padding-top: 32px;
-            padding-bottom: 32px;
-            justify-content: flex-start !important; /* Mobile: começa do topo */
-          }
-        }
-
-        .overflow-y-auto::-webkit-scrollbar {
-          width: 6px;
-        }
-
-        .overflow-y-auto::-webkit-scrollbar-track {
-          background: rgba(236, 236, 236, 0.1);
-          border-radius: 3px;
-        }
-
-        .overflow-y-auto::-webkit-scrollbar-thumb {
-          background: rgba(255, 199, 0, 0.3);
-          border-radius: 3px;
-        }
-
-        .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-          background: rgba(255, 199, 0, 0.5);
-        }
+        
+        .overflow-y-auto::-webkit-scrollbar { width: 6px; }
+        .overflow-y-auto::-webkit-scrollbar-track { background: rgba(236, 236, 236, 0.1); border-radius: 3px; }
+        .overflow-y-auto::-webkit-scrollbar-thumb { background: rgba(255, 199, 0, 0.3); border-radius: 3px; }
+        .overflow-y-auto::-webkit-scrollbar-thumb:hover { background: rgba(255, 199, 0, 0.5); }
       `}</style>
     </div>
   )
