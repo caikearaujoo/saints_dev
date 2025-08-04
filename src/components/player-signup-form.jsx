@@ -104,7 +104,7 @@ export function PlayerSignupForm({ onBack }) {
       <div className="flex items-center mb-2">
         <button
           onClick={onBack}
-          className="flex items-center text-neutral-300 hover:text-neutral-100 transition-colors"
+          className="cursor-pointer flex items-center text-neutral-300 hover:text-neutral-100 transition-colors"
         >
           <IconArrowLeft className="h-4 w-4 mr-1" />
           Voltar

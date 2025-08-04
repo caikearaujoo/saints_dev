@@ -95,11 +95,11 @@ export function StaffSignupForm({ onBack }) {
   }
 
   return (
-    <div className="mx-auto w-full h-screen max-w-2xl rounded-none bg-black p-4 md:rounded-2xl md:p-8  mt-20">
+    <div className="mx-auto w-full h-screen max-w-2xl rounded-none bg-black p-4 md:rounded-2xl md:p-8">
       <div className="flex items-center mb-2">
         <button
           onClick={onBack}
-          className="flex items-center text-neutral-300 hover:text-neutral-100 transition-colors"
+          className="cursor-pointer flex items-center text-neutral-300 hover:text-neutral-100 transition-colors"
         >
           <IconArrowLeft className="h-4 w-4 mr-1" />
           Voltar
