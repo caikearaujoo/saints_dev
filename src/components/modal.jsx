@@ -53,7 +53,7 @@ export function Modal({ isOpen, onClose, children }) {
         {/* Botão de fechar */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-[#ECECEC]/10 hover:bg-[#ECECEC]/20 transition-colors"
+          className="cursor-pointer absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-[#ECECEC]/10 hover:bg-[#ECECEC]/20 transition-colors"
           aria-label="Fechar modal"
         >
           <svg className="w-6 h-6 text-[#ECECEC]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

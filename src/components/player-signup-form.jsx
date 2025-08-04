@@ -127,14 +127,14 @@ export function PlayerSignupForm({ onBack }) {
         </div>
 
         <div>
-          <h2 className="text-xl font-bold text-neutral-200">Candidatura para Player</h2>
-          <p className="text-yellow-400 hover:text-yellow-300 transition-colors">Preencha suas informações para se candidatar</p>
+          <h2 className="cursor-default text-xl font-bold text-neutral-200">Candidatura para Player</h2>
+          <p className="cursor-default text-yellow-400 hover:text-yellow-300 transition-colors">Preencha suas informações para se candidatar</p>
         </div>
       </div>
       <form onSubmit={handleSubmit} className="space-y-4 pb-5">
         {/* Dados Pessoais */}
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-neutral-200 border-b border-neutral-700 pb-2">
+          <h3 className="cursor-default text-lg font-semibold text-neutral-200 border-b border-neutral-700 pb-2">
             Dados Pessoais
           </h3>
 
@@ -231,7 +231,7 @@ export function PlayerSignupForm({ onBack }) {
 
         {/* Dados do Player */}
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-yellow-400 border-b border-yellow-600 pb-2">
+          <h3 className="cursor-default text-lg font-semibold text-yellow-400 border-b border-yellow-600 pb-2">
             Informações de Player
           </h3>
 
@@ -323,7 +323,7 @@ export function PlayerSignupForm({ onBack }) {
 
         <button
           type="submit"
-          className="group/btn relative block h-12 w-full rounded-md bg-gradient-to-br from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 font-medium text-black shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset]"
+          className="cursor-pointer group/btn relative block h-12 w-full rounded-md bg-gradient-to-br from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 font-medium text-black shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset]"
         >
           Enviar Candidatura para Player &rarr;
           <BottomGradient />
