@@ -41,7 +41,7 @@ export function Modal({ isOpen, onClose, children }) {
       onClick={onClose}
     >
       <div
-        className="relative flex h-screen w-full flex-col justify-center bg-[#030303] shadow-2xl sm:h-auto sm:max-h-[95vh] sm:max-w-4xl sm:m-4 sm:rounded-2xl border-t sm:border border-[#ffc700]/20"
+        className="relative flex h-[100dvh] w-full flex-col justify-center bg-[#030303] shadow-2xl sm:h-auto sm:max-h-[95vh] sm:max-w-4xl sm:m-4 sm:rounded-2xl border-t sm:border border-[#ffc700]/20"
         onClick={(e) => e.stopPropagation()}
         style={{
           animation: isOpen ? "modalSlideIn 0.3s ease-out" : "none",
